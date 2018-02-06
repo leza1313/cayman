@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-        
-    
-    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-    <title>Inicio Web-Server</title>
-</head>
-    <body>
-      <?php include('templates/navbar.html');?>
-       <section id="cover">
-            <br>
+<?php 
+    include('fmontacabecera.php');
+    montacabecera('Inicio');
+?>
+           
             <section>
                    <div id="quienes-somos" class="container">
                        <h2>Quienes somos</h2>
@@ -100,7 +83,4 @@
                        </div>
                    </div>
                </div>
-        </section>
     <?php include('templates/footer.html');?>
-    </body>
-</html>

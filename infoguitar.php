@@ -1,33 +1,17 @@
+<?php
+    include('fmontacabecera.php');
+    montacabecera("Info Guitarra");
 
-   <html>
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    include ('admin/config.php');
+    $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        
-        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-        <title>Info guitarra</title>
-    </head>
-    <body id="cover">
-       <?php
-        include ('templates/navbar.html');
-        include ('admin/config.php');
-        $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
-       
-        $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
+    $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
 
-        $result = mysqli_query($db,$sql);
-        
-        $row = $result->fetch_assoc();    
-        
-        ?>
+    $result = mysqli_query($db,$sql);
+
+    $row = $result->fetch_assoc();    
+
+?>
         
         <br>
         <div class="container">
@@ -94,6 +78,4 @@
                 focusOnSelect: true
             });
         </script>
-        <?php include('templates/footer.html');?>
-    </body>
-</html>
+<?php include('templates/footer.html');?>

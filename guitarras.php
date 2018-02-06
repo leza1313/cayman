@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        
-
-        <title>Guitarras</title>
-    </head>
-    <body id="cover">
-       <?php 
-                include('templates/navbar.html');
-           ?>
+<?php
+    include('fmontacabecera.php');
+    montacabecera("Guitarras");
+?>
         <section id="productos">
             <div class="section-content">
                <div class="container">
@@ -79,6 +63,4 @@
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <?php include('templates/footer.html');?>
-    </body>
-</html>
+<?php include('templates/footer.html');?>
