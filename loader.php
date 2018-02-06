@@ -42,11 +42,11 @@ function resizeCanvas() {
 <script>
     var mypopup = document.getElementById("popupmodelo_bg");
     function openPopUpmodelo(){
-        event.preventDefault();
+        event.preventDefault(e);
         mypopup.style.display = "block";
     }
     function closePopUpmodelo(){
-        event.preventDefault();
+        event.preventDefault(e);
         mypopup.style.display = "none";
     }
 </script>

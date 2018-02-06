@@ -17,12 +17,12 @@
         <div class="container">
            <div class="row">
                <div class="col-6">
-                    <!-- Carousel, algo pasa con el carousel que en el movil deja una linea de margen a la derecha -->
+                    <!-- Carousel, adaptar tamaño imagenes -->
                     <div class="container" id="myproduct-foto">
                        <div class="foto-pal">
-                           <div><img src="<?php echo $row['foto'];?>" alt=""></div>
+                           <div><img src="<?php echo $row['foto'];?>" alt="" height="300"></div>
                            <div><img src="img/galeria-guitar.jpg" alt=""></div>
-                           <div><img src="<?php echo $row['foto'];?>" alt=""></div>
+                           <div><img src="<?php echo $row['foto'];?>" alt="" height="300"></div>
                            <div><img src="img/galeria-guitar.jpg" alt=""></div>
                        </div>
                        <div class="foto-min">
