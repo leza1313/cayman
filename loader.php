@@ -21,6 +21,7 @@ function resizeCanvas() {
 </script>
 
 <body onload="resizeCanvas();">
+  <!-- Html para el menu de la izquierda-->
    <div class="sidenav">
      <a href="" onclick="openPopUpmodelo()">Modelo</a>
       <a href="">Maderas</a>
@@ -107,12 +108,13 @@ function resizeCanvas() {
 
         //Material del modelo 3D
         var material = new THREE.MeshPhongMaterial( { color: 0xffaa00} );
+        var material2 = new THREE.MeshPhongMaterial( { color: 0x00aaff} );
 
         var guitar;
         var outline;
         //Importar el modelo STL
         var loader = new THREE.STLLoader();
-            loader.load( 'js/tele2.STL', function ( geometry ) {
+            loader.load( 'modelos/CUERPO.STL', function ( geometry ) {
 
                 var guit = new THREE.Mesh( geometry,material );
                 guit.scale.set(0.05, 0.05, 0.05);
@@ -125,15 +127,40 @@ function resizeCanvas() {
                 }
                 //PARA MARCAR EL BORDE DEL OBJETO
                 var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
-                var outlineMesh1 = new THREE.Mesh (geometry,outlineMaterial1);
+                var outlineGuit = new THREE.Mesh (geometry,outlineMaterial1);
                 //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
                 //se expande fijando una esquina, ampliandose hacia el lado contrario
-                outlineMesh1.position.set(-0.2,5,-10.2);
-                outlineMesh1.rotation.set(0,0,150);
-                outlineMesh1.scale.set(0.051,0.051,0.051);
+                outlineGuit.position.set(-0.2,5,-10.2);
+                outlineGuit.rotation.set(0,0,150);
+                outlineGuit.scale.set(0.051,0.051,0.051);
+                guit.borde=outlineGuit;
                 //scene.add(outlineMesh1);
-                outline=outlineMesh1;
-                guitar=guit;
+                //guitar=guit;
+
+            } );
+            loader.load( 'modelos/GOLPEADOR.STL', function ( geometry ) {
+
+                var golpeador = new THREE.Mesh( geometry,material2 );
+                golpeador.scale.set(0.05, 0.05, 0.05);
+                scene.add(golpeador);
+                golpeador.position.set( 0, 5, +10);
+                golpeador.rotation.set( 0, 0, 150);
+                golpeador.callback = function(event){
+                    //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                    openPopUpmodelo(event);
+                }
+                //PARA MARCAR EL BORDE DEL OBJETO
+                var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
+                var outlineGolpeador = new THREE.Mesh (geometry,outlineMaterial1);
+                //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
+                //se expande fijando una esquina, ampliandose hacia el lado contrario
+                outlineGolpeador.position.set(-0.2,5,+10.2);
+                outlineGolpeador.rotation.set(0,0,150);
+                outlineGolpeador.scale.set(0.051,0.051,0.051);
+                
+                golpeador.borde=outlineGolpeador;
+                //scene.add(outlineMesh1);
+                //guitar=golpeador;
 
             } );
         
@@ -190,9 +217,21 @@ function resizeCanvas() {
             //Si no es el mismo que antes, se pone el objeto anterior con su color original.
             // Despues se guarda el color del nuevo objeto encontrado. Y se pinta del color para ver que esta SELECCIONADO
             if (intersects.length>0){
-                scene.add(outline);
+                if(intersects[0]!=INTERSECTED){
+                    if (INTERSECTED){
+                        scene.remove(INTERSECTED.borde);
+                    }
+                    
+                    INTERSECTED=intersects[0].object;
+                    
+                    scene.add(intersects[0].object.borde);
+                    console.log("A");
+                }
             }else{
-                scene.remove(outline);
+                if(INTERSECTED){
+                    scene.remove(INTERSECTED.borde);
+                }
+                INTERSECTED=null;
             }
 
             renderer.render( scene, camera );
