@@ -24,8 +24,8 @@
        <h1>Welcome ADMIN<?php echo $login_session; ?></h1>
        <h2><a href = "logout.php">Sign Out</a></h2>
    </section>
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <?php include('../templates/footer.html');?>
    </body>
 </html>
