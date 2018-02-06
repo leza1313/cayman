@@ -16,7 +16,7 @@
     </head>
     <body id="cover">
        <?php 
-                include('navbar.html');
+                include('templates/navbar.html');
            ?>
         <section id="productos">
             <div class="section-content">
@@ -51,6 +51,6 @@
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <?php include('footer.html');?>
+        <?php include('templates/footer.html');?>
     </body>
 </html>

@@ -52,7 +52,7 @@ function resizeCanvas() {
 </script>
     
 
-    <?php include('navbar.html'); ?>
+    <?php include('templates/navbar.html'); ?>
     <canvas id="mycanvas"></canvas>
     
     <script src="js/THREEx.WindowResize.js"></script>
@@ -219,6 +219,6 @@ function resizeCanvas() {
     </script>
         <script src="js/jquery-3.2.1.min.js"></script>    
         <script src="js/bootstrap.min.js"></script>
-        <?php include('footer.html');?>
+        <?php include('templates/footer.html');?>
 </body>
 </html>

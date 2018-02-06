@@ -19,13 +19,13 @@
 		</style>
 </head>
 <body id="cover">
-        <?php include('navbar-admin.html');?>
+        <?php include('templates/navbar-admin.html');?>
     <section>
        <h1>Welcome ADMIN<?php echo $login_session; ?></h1>
        <h2><a href = "logout.php">Sign Out</a></h2>
    </section>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <?php include('footer.html');?>
+    <?php include('templates/footer.html');?>
    </body>
 </html>

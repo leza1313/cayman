@@ -17,8 +17,8 @@
     </head>
     <body id="cover">
        <?php
-        include ('navbar.html');
-        include ('config.php');
+        include ('templates/navbar.html');
+        include ('admin/config.php');
         $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
        
         $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
@@ -94,6 +94,6 @@
                 focusOnSelect: true
             });
         </script>
-        <?php include('footer.html');?>
+        <?php include('templates/footer.html');?>
     </body>
 </html>

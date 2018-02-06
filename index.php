@@ -17,7 +17,7 @@
     <title>Inicio Web-Server</title>
 </head>
     <body>
-      <?php include('navbar.html');?>
+      <?php include('templates/navbar.html');?>
        <section id="cover">
             <br>
             <section>
@@ -101,8 +101,6 @@
                    </div>
                </div>
         </section>
-        <!-- Footer, falta meter el mapa-->
-        <!-- Esta hecho con una tabla.... :(  -->
-    <?php include('footer.html');?>
+    <?php include('templates/footer.html');?>
     </body>
 </html>
