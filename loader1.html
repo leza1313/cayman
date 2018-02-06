@@ -131,7 +131,7 @@ function resizeCanvas() {
         var outline;
         //Importar el modelo STL
         var loader = new THREE.STLLoader();
-            loader.load( 'js/tele2.STL', function ( geometry ) {
+            loader.load( 'modelos/tele2.STL', function ( geometry ) {
 
                 var guit = new THREE.Mesh( geometry,material );
                 guit.scale.set(0.05, 0.05, 0.05);

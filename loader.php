@@ -16,7 +16,7 @@
 function resizeCanvas() {
     var canvs = document.getElementById("mycanvas");
     canvs.width = window.innerWidth*0.815;
-    canvs.height = window.innerHeight*0.815;
+    canvs.height = window.innerHeight*0.935;
 }
 </script>
 
@@ -72,8 +72,10 @@ function resizeCanvas() {
         var scene = new THREE.Scene();
         var camera = new THREE.PerspectiveCamera( 50, canvas.clientWidth/canvas.clientHeight, 0.01, 1000 );
 
-        camera.position.set( 40, 10, 40 );
-        camera.rotation.set( 0, 45, 0 );
+        //camera.position.set( 40, 10, 40 );
+        //camera.rotation.set( 0, 45, 0 );
+        camera.position.set( 0, 0, 40 );
+        camera.rotation.set( 0, 0, 0 );
         
         THREEx.WindowResize(renderer,camera);
 
@@ -81,7 +83,7 @@ function resizeCanvas() {
         
         //Añadir Luz
         
-        var light = new THREE.PointLight( 0xffffff, 1, 0 );
+        var light = new THREE.PointLight( 0xffffff, 0.85, 0 );
         light.position.copy( camera.position );
         light.castShadow = true;
         scene.add( light );
@@ -119,56 +121,56 @@ function resizeCanvas() {
                 var guit = new THREE.Mesh( geometry,material );
                 guit.scale.set(0.05, 0.05, 0.05);
                 scene.add(guit);
-                guit.position.set( 0, 5, -10);
-                guit.rotation.set( 0, 0, 150);
+                guit.position.set( 12, 10, 0);
+                guit.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+                
                 guit.callback = function(event){
                     //Muestra el desplegable para seleccionar distintas opciones de ese objeto
                     openPopUpmodelo(event);
                 }
-                //PARA MARCAR EL BORDE DEL OBJETO
+                /*
+                //PARA MARCAR EL BORDE DEL OBJETO, crear otro objeto un poco mas grande. Problemas con el raycaster
                 var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
                 var outlineGuit = new THREE.Mesh (geometry,outlineMaterial1);
                 //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
                 //se expande fijando una esquina, ampliandose hacia el lado contrario
-                outlineGuit.position.set(-0.2,5,-10.2);
-                outlineGuit.rotation.set(0,0,150);
                 outlineGuit.scale.set(0.051,0.051,0.051);
+                outlineGuit.position.set( 12.3, 10.15, 0);
+                outlineGuit.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+                outlineGuit.material.transparent = true;
                 guit.borde=outlineGuit;
-                //scene.add(outlineMesh1);
+                //scene.add(guit.borde);
                 //guitar=guit;
-
+                */
             } );
             loader.load( 'modelos/GOLPEADOR.STL', function ( geometry ) {
 
                 var golpeador = new THREE.Mesh( geometry,material2 );
                 golpeador.scale.set(0.05, 0.05, 0.05);
+                //golpeador.material.transparent = true;
                 scene.add(golpeador);
-                golpeador.position.set( 0, 5, +10);
-                golpeador.rotation.set( 0, 0, 150);
+                golpeador.position.set( 11.95, 4.778, 3);
+                golpeador.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
                 golpeador.callback = function(event){
                     //Muestra el desplegable para seleccionar distintas opciones de ese objeto
                     openPopUpmodelo(event);
                 }
+                /*
                 //PARA MARCAR EL BORDE DEL OBJETO
                 var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
                 var outlineGolpeador = new THREE.Mesh (geometry,outlineMaterial1);
                 //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
                 //se expande fijando una esquina, ampliandose hacia el lado contrario
-                outlineGolpeador.position.set(-0.2,5,+10.2);
-                outlineGolpeador.rotation.set(0,0,150);
                 outlineGolpeador.scale.set(0.051,0.051,0.051);
+                outlineGolpeador.position.set(11.95+0.225,4.778+0.15,3);
+                outlineGolpeador.rotation.set(THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+                outlineGolpeador.material.transparent = true;
                 
                 golpeador.borde=outlineGolpeador;
-                //scene.add(outlineMesh1);
+                //scene.add(outlineGolpeador);
                 //guitar=golpeador;
-
+                */
             } );
-        
-
-        
-        
-        //Revisar esto, si lo quito hay que girar el modelo o la camara
-        camera.position.z = 5;
         
         
         //Colorear el objeto que esta debajo del raton.
@@ -176,7 +178,7 @@ function resizeCanvas() {
         //Raycaster para seleccionar con el raton
         var raycaster = new THREE.Raycaster();
         var mouse = new THREE.Vector2();
-        var INTERSECTED;
+        var INTERSECTED,INTERSECTEDOUTLINE;
             
         function onDoubleClick( event ) {
             event.preventDefault();
@@ -216,23 +218,49 @@ function resizeCanvas() {
             //Si hay alguno, el que mas cerca este [0], si es el mismo que antes no se hace nada
             //Si no es el mismo que antes, se pone el objeto anterior con su color original.
             // Despues se guarda el color del nuevo objeto encontrado. Y se pinta del color para ver que esta SELECCIONADO
-            if (intersects.length>0){
+            
+            //Esto cambia la opacidad de los objetos encontrados. Problema que para hacer el borde, creo otro objeto
+            //Asi que en la interseccion al elegir el segundo objeto encontrado no siempre coje el borde
+            /*if (intersects.length>0){
                 if(intersects[0]!=INTERSECTED){
                     if (INTERSECTED){
-                        scene.remove(INTERSECTED.borde);
+                        INTERSECTED.material.opacity = (0);
                     }
                     
                     INTERSECTED=intersects[0].object;
+                    if (intersects.length>1){
+                        INTERSECTEDOUTLINE=intersects[1].object;    
+                    }
                     
-                    scene.add(intersects[0].object.borde);
-                    console.log("A");
+                    //scene.add(INTERSECTED.borde);
+                    
+                    INTERSECTEDOUTLINE.material.opacity = (1);
                 }
             }else{
                 if(INTERSECTED){
-                    scene.remove(INTERSECTED.borde);
+                    //scene.remove(INTERSECTED.borde);
+                    INTERSECTEDOUTLINE.material.opacity = (0);
                 }
                 INTERSECTED=null;
+            }*/
+            
+            //Se ilumina el objeto Seleccionado
+            if ( intersects.length > 0 ) {
+                if ( INTERSECTED != intersects[ 0 ].object ) {
+                    if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+                    INTERSECTED = intersects[ 0 ].object;
+                    INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+                    INTERSECTED.material.emissive.setHex( 0x333333 );
+                }
+            } else {
+                if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+                INTERSECTED = null;
             }
+
+            
+            
+            
+            
 
             renderer.render( scene, camera );
         }
@@ -258,6 +286,6 @@ function resizeCanvas() {
     </script>
         <script src="js/jquery-3.2.1.min.js"></script>    
         <script src="js/bootstrap.min.js"></script>
-        <?php include('templates/footer.html');?>
+        <?php //include('templates/footer.html');?>
 </body>
 </html>
