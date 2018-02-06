@@ -8,9 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
 <!-- Custom CSS -->
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 <title>Panel Admin</title>
 <style>
@@ -26,6 +26,6 @@
    </section>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <?php include('templates/footer.html');?>
+    <?php include('../templates/footer.html');?>
    </body>
 </html>

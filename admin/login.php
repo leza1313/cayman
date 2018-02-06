@@ -7,17 +7,14 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
         
 
-        <title>Plantilla Web-Server</title>
+        <title>Login Web-Server</title>
     </head>
     <body id="cover">
-       <?php
-        include('templates/navbar.html');
-        ?>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <br>
@@ -47,8 +44,7 @@
 			
       </div>
         
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <?php include('templates/footer.html');?>
+        <script src="../js/jquery-3.2.1.min.js"></script>
+        <script src=".../js/bootstrap.min.js"></script>
     </body>
 </html>

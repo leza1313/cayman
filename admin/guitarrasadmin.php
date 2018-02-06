@@ -7,9 +7,9 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
         
 
         <title>Guitarras Admin</title>
@@ -47,8 +47,8 @@
        
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <?php include('templates/footer.html');?>
+        <script src="../js/jquery-3.2.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <?php include('../templates/footer.html');?>
     </body>
 </html>
