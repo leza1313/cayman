@@ -33,7 +33,7 @@ function resizeCanvas() {
        <div id="popupmodelo_main_div">
            <p id="popupmodelo_title">Escoge un modelo de guitarra</p>
            <p id="popupmodelo_desc">//TODO Botones con imagenes de las distintas formas</p>
-           <div id="closepopupmodelo" title="Cerrar" onclick="closePopUpmodelo()">
+           <div id="closepopupmodelo" title="Cerrar" onclick="closePopUpmodelo(event)">
                <p id="closepopupmodelo_p">X</p>
            </div>
        </div> 
@@ -41,12 +41,12 @@ function resizeCanvas() {
 <!-- JS para Menu PopUp-->
 <script>
     var mypopup = document.getElementById("popupmodelo_bg");
-    function openPopUpmodelo(){
-        event.preventDefault(e);
+    function openPopUpmodelo(event){
+        event.preventDefault();
         mypopup.style.display = "block";
     }
-    function closePopUpmodelo(){
-        event.preventDefault(e);
+    function closePopUpmodelo(event){
+        event.preventDefault();
         mypopup.style.display = "none";
     }
 </script>
@@ -119,9 +119,9 @@ function resizeCanvas() {
                 scene.add(guit);
                 guit.position.set( 0, 5, -10);
                 guit.rotation.set( 0, 0, 150);
-                guit.callback = function(){
+                guit.callback = function(event){
                     //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                    openPopUpmodelo();
+                    openPopUpmodelo(event);
                 }
                 //PARA MARCAR EL BORDE DEL OBJETO
                 var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
@@ -163,7 +163,7 @@ function resizeCanvas() {
 
             if ( intersects.length > 0 ) {
 
-                intersects[0].object.callback();
+                intersects[0].object.callback(event);
 
             }
 
