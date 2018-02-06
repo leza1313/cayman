@@ -15,8 +15,9 @@
         <title>Login Web-Server</title>
     </head>
     <body id="cover">
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <br>
+        <a href="../index.php" class="btn btn-info">INICIO</a>
+        <br>
         <br>
         <div align = "center" >
          <div style = "width:300px; border: solid 1px #333333; background-color: #666 " align = "left">
@@ -29,21 +30,21 @@
                   <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
-               
+                
                <div style = "font-size:11px; color:#cc0000; margin-top:10px">
                <?php 
                    include ('comprobarlogin.php');
                    echo $error;
                ?>
-               
                </div>
-					
+                	
             </div>
-				
          </div>
-			
       </div>
         
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="../js/jquery-3.2.1.min.js"></script>
         <script src=".../js/bootstrap.min.js"></script>
     </body>
