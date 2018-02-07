@@ -111,82 +111,213 @@ function resizeCanvas() {
         }
 
         //Material del modelo 3D
-        var material = new THREE.MeshPhongMaterial( { color: 0xffaa00} );
+        var material1 = new THREE.MeshPhongMaterial( { color: 0xffaa00} );
         var material2 = new THREE.MeshPhongMaterial( { color: 0x00aaff} );
+        var material3 = new THREE.MeshPhongMaterial( { color: 0x00ff6c} );
+        var material4 = new THREE.MeshPhongMaterial( { color: 0xd8ff00} );
+        var material5 = new THREE.MeshPhongMaterial( { color: 0x588600} );
+        var material6 = new THREE.MeshPhongMaterial( { color: 0x001cf7} );
+        var material7 = new THREE.MeshPhongMaterial( { color: 0xa900f4} );
+        var material8 = new THREE.MeshPhongMaterial( { color: 0xf400e1} );
+        var material9 = new THREE.MeshPhongMaterial( { color: 0xf40067} );
 
-        var guitarobj,golpeadorobj;
+        var guitarobj,golpeadorobj,mastilobj,pastilla_mastilobj,pastilla_medioobj,pastilla_puenteobj,puenteobj,tono_1obj,tono_2obj,volumenobj;
         //Importar el modelo STL
         var loader = new THREE.STLLoader();
-            loader.load( 'modelos/CUERPO.STL', function ( geometry ) {
+        loader.load( 'modelos/CUERPO.STL', function ( geometry ) {
 
-                var guit = new THREE.Mesh( geometry,material );
-                guit.scale.set(0.05, 0.05, 0.05);
-                scene.add(guit);
-                guit.position.set( 12, 10, 0);
-                guit.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
-                
-                guit.callback = function(event){
-                    //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                    openPopUpmodelo(event);
-                }
-                guit.borrar = function (){
-                    scene.remove(guit);
-                }
-                guitarobj = guit;
-                /*
-                //PARA MARCAR EL BORDE DEL OBJETO, crear otro objeto un poco mas grande. Problemas con el raycaster
-                var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
-                var outlineGuit = new THREE.Mesh (geometry,outlineMaterial1);
-                //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
-                //se expande fijando una esquina, ampliandose hacia el lado contrario
-                outlineGuit.scale.set(0.051,0.051,0.051);
-                outlineGuit.position.set( 12.3, 10.15, 0);
-                outlineGuit.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
-                outlineGuit.material.transparent = true;
-                guit.borde=outlineGuit;
-                //scene.add(guit.borde);
-                //guitar=guit;
-                */
-            } );
-            loader.load( 'modelos/GOLPEADOR.STL', function ( geometry ) {
+            var guit = new THREE.Mesh( geometry,material1 );
+            guit.scale.set(0.05, 0.05, 0.05);
+            scene.add(guit);
+            guit.position.set( 5, 10, 0);
+            guit.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
 
-                var golpeador = new THREE.Mesh( geometry,material2 );
-                golpeador.scale.set(0.05, 0.05, 0.05);
-                //golpeador.material.transparent = true;
-                scene.add(golpeador);
-                golpeador.position.set( 11.95, 4.778, 3);
-                golpeador.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
-                golpeador.callback = function(event){
-                    //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                    openPopUpmodelo(event);
-                }
-                golpeador.borrar = function (){
-                    scene.remove(golpeador);
-                }
-                golpeadorobj = golpeador;
-                /*
-                //PARA MARCAR EL BORDE DEL OBJETO
-                var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
-                var outlineGolpeador = new THREE.Mesh (geometry,outlineMaterial1);
-                //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
-                //se expande fijando una esquina, ampliandose hacia el lado contrario
-                outlineGolpeador.scale.set(0.051,0.051,0.051);
-                outlineGolpeador.position.set(11.95+0.225,4.778+0.15,3);
-                outlineGolpeador.rotation.set(THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
-                outlineGolpeador.material.transparent = true;
-                
-                golpeador.borde=outlineGolpeador;
-                //scene.add(outlineGolpeador);
-                //guitar=golpeador;
-                */
-            } );
+            guit.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            guit.borrar = function (){
+                scene.remove(guit);
+            }
+            guitarobj = guit;
+            /*
+            //PARA MARCAR EL BORDE DEL OBJETO, crear otro objeto un poco mas grande. Problemas con el raycaster
+            var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
+            var outlineGuit = new THREE.Mesh (geometry,outlineMaterial1);
+            //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
+            //se expande fijando una esquina, ampliandose hacia el lado contrario
+            outlineGuit.scale.set(0.051,0.051,0.051);
+            outlineGuit.position.set( 12.3, 10.15, 0);
+            outlineGuit.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            outlineGuit.material.transparent = true;
+            guit.borde=outlineGuit;
+            //scene.add(guit.borde);
+            //guitar=guit;
+            */
+        } );
+        loader.load( 'modelos/GOLPEADOR.STL', function ( geometry ) {
+
+            var golpeador = new THREE.Mesh( geometry,material2 );
+            golpeador.scale.set(0.05, 0.05, 0.05);
+            //golpeador.material.transparent = true;
+            scene.add(golpeador);
+            golpeador.position.set( 4.95, 4.778, 3);
+            golpeador.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            golpeador.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            golpeador.borrar = function (){
+                scene.remove(golpeador);
+            }
+            golpeadorobj = golpeador;
+        } );
+        loader.load( 'modelos/MASTIL.STL', function ( geometry ) {
+            
+            var mastil = new THREE.Mesh( geometry,material3 );
+            mastil.scale.set(0.05, 0.05, 0.05);
+            //mastil.material.transparent = true;
+            scene.add(mastil);
+            mastil.position.set( 30.8, 2.88, 2.09);
+            mastil.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            mastil.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            mastil.borrar = function (){
+                scene.remove(mastil);
+            }
+            mastilobj = mastil;
+        } );
+        loader.load( 'modelos/PASTILLA_MASTIL.STL', function ( geometry ) {
+            
+            var pastilla_mastil = new THREE.Mesh( geometry,material4 );
+            pastilla_mastil.scale.set(0.05, 0.05, 0.05);
+            //pastilla_mastil.material.transparent = true;
+            scene.add(pastilla_mastil);
+            pastilla_mastil.position.set( 4.9,3.2, 2.65);
+            pastilla_mastil.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            pastilla_mastil.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            pastilla_mastil.borrar = function (){
+                scene.remove(pastilla_mastil);
+            }
+            pastilla_mastilobj = pastilla_mastil;
+        } );
+        loader.load( 'modelos/PASTILLA_MEDIO.STL', function ( geometry ) {
+            
+            var pastilla_medio = new THREE.Mesh( geometry,material5 );
+            pastilla_medio.scale.set(0.05, 0.05, 0.05);
+            //pastilla_medio.material.transparent = true;
+            scene.add(pastilla_medio);
+            pastilla_medio.position.set( 4.9,3.2, 2.65);
+            pastilla_medio.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            pastilla_medio.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            pastilla_medio.borrar = function (){
+                scene.remove(pastilla_medio);
+            }
+            pastilla_medioobj = pastilla_medio;
+        } );
+        loader.load( 'modelos/PASTILLA_PUENTE.STL', function ( geometry ) {
+            
+            var pastilla_puente = new THREE.Mesh( geometry,material6 );
+            pastilla_puente.scale.set(0.05, 0.05, 0.05);
+            //pastilla_puente.material.transparent = true;
+            scene.add(pastilla_puente);
+            pastilla_puente.position.set( 4.9,3.2, 2.65);
+            pastilla_puente.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            pastilla_puente.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            pastilla_puente.borrar = function (){
+                scene.remove(pastilla_puente);
+            }
+            pastilla_puenteobj = pastilla_puente;
+        } );
+        loader.load( 'modelos/PUENTE.STL', function ( geometry ) {
+            
+            var puente = new THREE.Mesh( geometry,material7 );
+            puente.scale.set(0.05, 0.05, 0.05);
+            //puente.material.transparent = true;
+            scene.add(puente);
+            puente.position.set( 5,3.1, 0.97);
+            puente.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            puente.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            puente.borrar = function (){
+                scene.remove(puente);
+            }
+            puenteobj = puente;
+        } );
+        loader.load( 'modelos/TONO_1.STL', function ( geometry ) {
+            
+            var tono_1 = new THREE.Mesh( geometry,material8 );
+            tono_1.scale.set(0.05, 0.05, 0.05);
+            //tono_1.material.transparent = true;
+            scene.add(tono_1);
+            tono_1.position.set( 4.943,-1.033, 3.067);
+            tono_1.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            tono_1.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            tono_1.borrar = function (){
+                scene.remove(tono_1);
+            }
+            tono_1obj = tono_1;
+        } );
+        loader.load( 'modelos/TONO_2.STL', function ( geometry ) {
+            
+            var tono_2 = new THREE.Mesh( geometry,material9 );
+            tono_2.scale.set(0.05, 0.05, 0.05);
+            //tono_2.material.transparent = true;
+            scene.add(tono_2);
+            tono_2.position.set( 4.943,-1.033, 3.067);
+            tono_2.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            tono_2.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            tono_2.borrar = function (){
+                scene.remove(tono_2);
+            }
+            tono_2obj = tono_2;
+        } );
+        loader.load( 'modelos/VOLUMEN.STL', function ( geometry ) {
+            
+            var volumen = new THREE.Mesh( geometry,material9 );
+            volumen.scale.set(0.05, 0.05, 0.05);
+            //volumen.material.transparent = true;
+            scene.add(volumen);
+            volumen.position.set( 4.943,-1.033, 3.067);
+            volumen.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+            volumen.callback = function(event){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo(event);
+            }
+            volumen.borrar = function (){
+                scene.remove(volumen);
+            }
+            volumenobj = volumen;
+        } );
+       
+       
+        
         function cambiarModelo(event,antiguo,nuevo){
             event.preventDefault();
             scene.remove(antiguo);
             loader.load(nuevo,function( geometry ){
-                var cambio = new THREE.Mesh( geometry,material );
+                var cambio = new THREE.Mesh( geometry,material1 );
                 cambio.scale.set(0.05,0.05,0.05);
-                cambio.position.set(12,10,0);
+                cambio.position.set(5,10,0);
                 cambio.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
                 scene.add(cambio);
                 closePopUpmodelo(event);
@@ -202,8 +333,6 @@ function resizeCanvas() {
             });
             
         }
-        
-        
         //Colorear el objeto que esta debajo del raton.
         {
         //Raycaster para seleccionar con el raton
