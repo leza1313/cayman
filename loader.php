@@ -23,17 +23,19 @@ function resizeCanvas() {
 <body onload="resizeCanvas();">
   <!-- Html para el menu de la izquierda-->
    <div class="sidenav">
-     <a href="" onclick="openPopUpmodelo()">Modelo</a>
+     <a href="" onclick="openPopUpmodelo(event)">Modelo</a>
       <a href="">Maderas</a>
       <a href="">Acabado</a>
       <a href="">Pastillas</a>
       <a href="">Componentes</a>
     </div>
-        <!-- HTML para el menu PopUp-->
+        <!-- HTML para el menu PopUpmodelo-->
     <div id="popupmodelo_bg">
        <div id="popupmodelo_main_div">
            <p id="popupmodelo_title">Escoge un modelo de guitarra</p>
            <p id="popupmodelo_desc">//TODO Botones con imagenes de las distintas formas</p>
+           <a href="" onclick="cambiarModelo(event,'guitarobj','modelos/tele2.STL')"><img src="img/logo.png" alt="" height="200" width="200"></a>
+           <a href="" onclick="cambiarModelo(event,'guitarobj','modelos/CUERPO.STL')"><img src="img/sg-azul.jpg" alt="" height="200" width="200"></a>
            <div id="closepopupmodelo" title="Cerrar" onclick="closePopUpmodelo(event)">
                <p id="closepopupmodelo_p">X</p>
            </div>
@@ -112,8 +114,7 @@ function resizeCanvas() {
         var material = new THREE.MeshPhongMaterial( { color: 0xffaa00} );
         var material2 = new THREE.MeshPhongMaterial( { color: 0x00aaff} );
 
-        var guitar;
-        var outline;
+        var guitarobj,golpeadorobj;
         //Importar el modelo STL
         var loader = new THREE.STLLoader();
             loader.load( 'modelos/CUERPO.STL', function ( geometry ) {
@@ -128,6 +129,10 @@ function resizeCanvas() {
                     //Muestra el desplegable para seleccionar distintas opciones de ese objeto
                     openPopUpmodelo(event);
                 }
+                guit.borrar = function (){
+                    scene.remove(guit);
+                }
+                guitarobj = guit;
                 /*
                 //PARA MARCAR EL BORDE DEL OBJETO, crear otro objeto un poco mas grande. Problemas con el raycaster
                 var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
@@ -155,6 +160,10 @@ function resizeCanvas() {
                     //Muestra el desplegable para seleccionar distintas opciones de ese objeto
                     openPopUpmodelo(event);
                 }
+                golpeador.borrar = function (){
+                    scene.remove(golpeador);
+                }
+                golpeadorobj = golpeador;
                 /*
                 //PARA MARCAR EL BORDE DEL OBJETO
                 var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
@@ -171,6 +180,28 @@ function resizeCanvas() {
                 //guitar=golpeador;
                 */
             } );
+        function cambiarModelo(event,antiguo,nuevo){
+            event.preventDefault();
+            scene.remove(antiguo);
+            loader.load(nuevo,function( geometry ){
+                var cambio = new THREE.Mesh( geometry,material );
+                cambio.scale.set(0.05,0.05,0.05);
+                cambio.position.set(12,10,0);
+                cambio.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
+                scene.add(cambio);
+                closePopUpmodelo(event);
+                guitarobj.borrar();
+                cambio.callback = function(event){
+                    //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                    openPopUpmodelo(event);
+                }
+                cambio.borrar = function (){
+                    scene.remove(cambio);
+                }
+                guitarobj = cambio;
+            });
+            
+        }
         
         
         //Colorear el objeto que esta debajo del raton.
