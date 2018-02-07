@@ -120,6 +120,7 @@ function resizeCanvas() {
         var material7 = new THREE.MeshPhongMaterial( { color: 0xa900f4} );
         var material8 = new THREE.MeshPhongMaterial( { color: 0xf400e1} );
         var material9 = new THREE.MeshPhongMaterial( { color: 0xf40067} );
+        var material10 = new THREE.MeshPhongMaterial( { color: 0xf40000} );
 
         var guitarobj,golpeadorobj,mastilobj,pastilla_mastilobj,pastilla_medioobj,pastilla_puenteobj,puenteobj,tono_1obj,tono_2obj,volumenobj;
         //Importar el modelo STL
@@ -293,7 +294,7 @@ function resizeCanvas() {
         } );
         loader.load( 'modelos/VOLUMEN.STL', function ( geometry ) {
             
-            var volumen = new THREE.Mesh( geometry,material9 );
+            var volumen = new THREE.Mesh( geometry,material10 );
             volumen.scale.set(0.05, 0.05, 0.05);
             //volumen.material.transparent = true;
             scene.add(volumen);
