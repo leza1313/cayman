@@ -103,7 +103,7 @@
         light.shadow.camera.near = 0.5;       // default
         light.shadow.camera.far = 500      // default
         
-        controls = new THREE.OrbitControls(camera);
+        controls = new THREE.OrbitControls(camera,renderer.domElement);
         controls.rotateSpeed = 0.5;
         controls.enableDamping = true;
         controls.dampingFactor = 0.25;
