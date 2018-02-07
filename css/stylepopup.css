@@ -1,4 +1,4 @@
-#popupmodelo_bg{
+.mypopup_bg{
     position:fixed;
     top: 0;
     left: 0;
@@ -8,7 +8,7 @@
     display: none;
     z-index: 2;
 }
-#popupmodelo_main_div{
+.mypopup_main_div{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -20,7 +20,7 @@
     border: 2px solid black;
     border-radius: 5px;
 }
-#closepopupmodelo{
+.closemypopup{
     position: absolute;
     width: 25px;
     height: 25px;
@@ -31,12 +31,12 @@
     top: 5px;
     cursor: pointer;
 }
-#closepopupmodelo_p{
+.closemypopup_p{
     margin-top: 0px;
     font-family: sans-serif;
     font-weight: bold;
 }
-#popupmodelo_title{
+.mypopup_title{
     text-align: center;
     font-family: sans-serif;
     font-size: 30px;

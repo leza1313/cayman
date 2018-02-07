@@ -15,32 +15,43 @@
 <body>
   <!-- Html para el menu de la izquierda-->
    <div class="sidenav">
-     <a href="" onclick="openPopUpmodelo(event)">Modelo</a>
+     <a href="" onclick="openPopUp(event,'popupmodelo_bg')" onmouseover="iluminar(guitarobj)" onmouseout="apagar(guitarobj)">Modelo</a>
       <a href="">Maderas</a>
       <a href="">Acabado</a>
       <a href="">Pastillas</a>
       <a href="">Componentes</a>
     </div>
-        <!-- HTML para el menu PopUpmodelo-->
-    <div id="popupmodelo_bg">
-       <div id="popupmodelo_main_div">
-           <p id="popupmodelo_title">Escoge un modelo de guitarra</p>
-           <p id="popupmodelo_desc">//TODO Botones con imagenes de las distintas formas</p>
+        <!-- PopUp MODELO-->
+    <div id="popupmodelo_bg" class="mypopup_bg">
+       <div id="popupmodelo_main_div" class="mypopup_main_div">
+           <p id="popupmodelo_title" class="mypopup_title">Escoge un modelo de guitarra</p>
+           <p id="popupmodelo_desc" class="mypopup_desc">//TODO Botones con imagenes de las distintas formas</p>
            <a href="" onclick="cambiarModelo(event,'guitarobj','modelos/tele2.STL')"><img src="img/logo.png" alt="" height="200" width="200"></a>
            <a href="" onclick="cambiarModelo(event,'guitarobj','modelos/CUERPO.STL')"><img src="img/sg-azul.jpg" alt="" height="200" width="200"></a>
-           <div id="closepopupmodelo" title="Cerrar" onclick="closePopUpmodelo(event)">
-               <p id="closepopupmodelo_p">X</p>
+           <div id="closepopupmodelo" class="closemypopup" title="Cerrar" onclick="closePopUp(event,'popupmodelo_bg')">
+               <p id="closepopupmodelo_p" class="closemypopup_p">X</p>
            </div>
-       </div> 
+       </div>
+    </div>
+    <!-- PopUp GOLPEADOR-->
+    <div id="popupgolpeador_bg" class="mypopup_bg">
+       <div id="popupgolpeador_main_div" class="mypopup_main_div">
+           <p id="popupgolpeador_title" class="mypopup_title">Escoge un golpeador de guitarra</p>
+           <p id="popupgolpeador_desc" class="mypopup_desc">//TODO GOLPEADORES</p>
+           <div id="closepopupgolpeador" class="closemypopup" title="Cerrar" onclick="closePopUp(event,'popupgolpeador_bg')">
+               <p id="closepopupgolpeador_p" class="closemypopup_p">X</p>
+           </div>
+       </div>
     </div>
 <!-- JS para Menu PopUp-->
 <script>
-    var mypopup = document.getElementById("popupmodelo_bg");
-    function openPopUpmodelo(event){
+    function openPopUp(event,popupid){
+        var mypopup = document.getElementById(popupid);
         event.preventDefault();
         mypopup.style.display = "block";
     }
-    function closePopUpmodelo(event){
+    function closePopUp(event,popupid){
+        var mypopup = document.getElementById(popupid);
         event.preventDefault();
         mypopup.style.display = "none";
     }
@@ -54,29 +65,36 @@
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script src="js/STLLoader.js"></script>
+    
 	<script>
         
         var canvas = document.getElementById('mycanvas');
         function resizeCanvas() {
             canvas.width = window.innerWidth*0.815;
-            canvas.height = window.innerHeight*0.815;
+            canvas.height = window.innerHeight*0.915;
             return [canvas.width,canvas.height];
         }
         var renderer = new THREE.WebGLRenderer({canvas: canvas});
-        renderer.setViewport(0, 0, canvas.clientWidth, canvas.clientHeight);
-        renderer.setSize( canvas.clientWidth, canvas.clientHeight );
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera( 50, canvas.width/canvas.height, 0.01, 1000 );
+
+        
         document.body.appendChild( renderer.domElement );
         
-        var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera( 50, canvas.clientWidth/canvas.clientHeight, 0.01, 1000 );
-
-        //camera.position.set( 40, 10, 40 );
-        //camera.rotation.set( 0, 45, 0 );
         camera.position.set( 0, 0, 40 );
         camera.rotation.set( 0, 0, 0 );
         
         window.addEventListener( 'resize', onWindowResize, false );
         window.addEventListener( 'orientationchange', onWindowResize, false );
+        
+        tamano=resizeCanvas();
+        canvas.width = tamano[0];
+        canvas.height = tamano[1];
+        renderer.setViewport(0, 0, canvas.width, canvas.height);
+        renderer.setSize( canvas.width, canvas.height );
+        camera.aspect = canvas.width / canvas.height;
+        camera.updateProjectionMatrix();
+        
 
         function onWindowResize(){
             tamano=resizeCanvas();
@@ -142,7 +160,7 @@
 
             guit.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event,'popupmodelo_bg');
             }
             guit.borrar = function (){
                 scene.remove(guit);
@@ -173,7 +191,7 @@
             golpeador.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             golpeador.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event,'popupgolpeador_bg');
             }
             golpeador.borrar = function (){
                 scene.remove(golpeador);
@@ -190,7 +208,7 @@
             mastil.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             mastil.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event);
             }
             mastil.borrar = function (){
                 scene.remove(mastil);
@@ -207,7 +225,7 @@
             pastilla_mastil.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             pastilla_mastil.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event);
             }
             pastilla_mastil.borrar = function (){
                 scene.remove(pastilla_mastil);
@@ -224,7 +242,7 @@
             pastilla_medio.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             pastilla_medio.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event);
             }
             pastilla_medio.borrar = function (){
                 scene.remove(pastilla_medio);
@@ -241,7 +259,7 @@
             pastilla_puente.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             pastilla_puente.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event);
             }
             pastilla_puente.borrar = function (){
                 scene.remove(pastilla_puente);
@@ -258,7 +276,7 @@
             puente.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             puente.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event);
             }
             puente.borrar = function (){
                 scene.remove(puente);
@@ -275,7 +293,7 @@
             tono_1.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             tono_1.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event);
             }
             tono_1.borrar = function (){
                 scene.remove(tono_1);
@@ -292,7 +310,7 @@
             tono_2.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             tono_2.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event);
             }
             tono_2.borrar = function (){
                 scene.remove(tono_2);
@@ -309,7 +327,7 @@
             volumen.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
             volumen.callback = function(event){
                 //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                openPopUpmodelo(event);
+                openPopUp(event);
             }
             volumen.borrar = function (){
                 scene.remove(volumen);
@@ -317,7 +335,13 @@
             volumenobj = volumen;
         } );
        
-       
+        function iluminar(parte){
+            parte.currentHex = parte.material.emissive.getHex();
+           parte.material.emissive.setHex( 0x333333 );
+        }
+        function apagar(parte){
+            parte.material.emissive.setHex(parte.currentHex );
+        }
         
         function cambiarModelo(event,antiguo,nuevo){
             event.preventDefault();
@@ -328,11 +352,11 @@
                 cambio.position.set(5,10,0);
                 cambio.rotation.set( THREE.Math.degToRad(90),THREE.Math.degToRad(-90), THREE.Math.degToRad(0));
                 scene.add(cambio);
-                closePopUpmodelo(event);
+                closePopUp(event,'popupmodelo_bg');
                 guitarobj.borrar();
                 cambio.callback = function(event){
                     //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                    openPopUpmodelo(event);
+                    openPopUp(event,'popupmodelo_bg');
                 }
                 cambio.borrar = function (){
                     scene.remove(cambio);
@@ -382,6 +406,7 @@
             // calculate objects intersecting the picking ray
             var intersects = raycaster.intersectObjects( scene.children );
             
+            /*
             //Si no hay objetos encontrados, se ultimo objeto se vuelve al color de antes
             //Si hay alguno, el que mas cerca este [0], si es el mismo que antes no se hace nada
             //Si no es el mismo que antes, se pone el objeto anterior con su color original.
@@ -389,7 +414,7 @@
             
             //Esto cambia la opacidad de los objetos encontrados. Problema que para hacer el borde, creo otro objeto
             //Asi que en la interseccion al elegir el segundo objeto encontrado no siempre coje el borde
-            /*if (intersects.length>0){
+            if (intersects.length>0){
                 if(intersects[0]!=INTERSECTED){
                     if (INTERSECTED){
                         INTERSECTED.material.opacity = (0);
@@ -424,21 +449,15 @@
                 if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
                 INTERSECTED = null;
             }
-
-            
-            
-            
-            
-
             renderer.render( scene, camera );
         }
-
+            
         window.addEventListener( 'mousemove', onMouseMove, false );
         renderer.domElement.ondblclick=onDoubleClick;
-        //window.addEventListener( 'mousedown', onDocumentMouseDown, false );
         window.requestAnimationFrame(render);
             
         }
+        
 
 
         var animate = function () {
@@ -451,8 +470,9 @@
 
         animate();
     </script>
-        <script src="js/jquery-3.2.1.min.js"></script>    
-        <script src="js/bootstrap.min.js"></script>
-        <?php //include('templates/footer.html');?>
+    
+    <script src="js/jquery-3.2.1.min.js"></script>    
+    <script src="js/bootstrap.min.js"></script>
+    <?php //include('templates/footer.html');?>
 </body>
 </html>
