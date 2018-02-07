@@ -76,6 +76,7 @@
         camera.rotation.set( 0, 0, 0 );
         
         window.addEventListener( 'resize', onWindowResize, false );
+        window.addEventListener( 'orientationchange', onWindowResize, false );
 
         function onWindowResize(){
             tamano=resizeCanvas();
