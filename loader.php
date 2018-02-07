@@ -12,15 +12,7 @@
 <link rel="stylesheet" href="css/stylepopup.css">
 <title>Taller Custom</title>
 </head>
-<script>
-function resizeCanvas() {
-    var canvs = document.getElementById("mycanvas");
-    canvs.width = window.innerWidth*0.815;
-    canvs.height = window.innerHeight*0.935;
-}
-</script>
-
-<body onload="resizeCanvas();">
+<body>
   <!-- Html para el menu de la izquierda-->
    <div class="sidenav">
      <a href="" onclick="openPopUpmodelo(event)">Modelo</a>
@@ -63,9 +55,13 @@ function resizeCanvas() {
     <script src="js/OrbitControls.js"></script>
     <script src="js/STLLoader.js"></script>
 	<script>
-        resizeCanvas();
-        var canvas = document.getElementById('mycanvas');
         
+        var canvas = document.getElementById('mycanvas');
+        function resizeCanvas() {
+            canvas.width = window.innerWidth*0.815;
+            canvas.height = window.innerHeight*0.815;
+            return [canvas.width,canvas.height];
+        }
         var renderer = new THREE.WebGLRenderer({canvas: canvas});
         renderer.setViewport(0, 0, canvas.clientWidth, canvas.clientHeight);
         renderer.setSize( canvas.clientWidth, canvas.clientHeight );
@@ -79,10 +75,20 @@ function resizeCanvas() {
         camera.position.set( 0, 0, 40 );
         camera.rotation.set( 0, 0, 0 );
         
-        THREEx.WindowResize(renderer,camera);
+        window.addEventListener( 'resize', onWindowResize, false );
 
+        function onWindowResize(){
+            tamano=resizeCanvas();
+            canvas.width = tamano[0];
+            canvas.height = tamano[1];
+            renderer.setViewport(0, 0, canvas.width, canvas.height);
+            renderer.setSize( canvas.width, canvas.height );
+            camera.aspect = canvas.width / canvas.height;
+            camera.updateProjectionMatrix();
+
+        }
         scene.background = new THREE.Color( 0x72645b );
-        
+    
         //Añadir Luz
         
         var light = new THREE.PointLight( 0xffffff, 0.85, 0 );
@@ -435,7 +441,6 @@ function resizeCanvas() {
 
 
         var animate = function () {
-            resizeCanvas();
             requestAnimationFrame( animate );
             controls.update();
 

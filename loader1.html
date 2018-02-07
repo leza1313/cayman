@@ -13,18 +13,16 @@
 <title>Taller Custom</title>
 </head>
 <script>
-function resizeCanvas() {
-    var canvs = document.getElementById("mycanvas");
-    console.log("B");
-    canvs.width = window.innerWidth*0.815;
-    canvs.height = window.innerHeight*0.815;
-    
-    console.log(canvs.width);
-}
+    function resizeCanvas() {
+        var canvs = document.getElementById("mycanvas");
+        canvs.width = window.innerWidth*0.815;
+        canvs.height = window.innerHeight*0.815;
+        return [canvs.width,canvs.height];
+    }
 </script>
 <script src='js/THREEx.WindowResize.js'></script>
 
-<body onload="resizeCanvas();">
+<body>
    <div class="sidenav">
      <a href="" onclick="openPopUpmodelo()">Modelo</a>
       <a href="">Maderas</a>
@@ -61,8 +59,8 @@ function resizeCanvas() {
     <script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script src="js/STLLoader.js"></script>
-	<script>
-        resizeCanvas();
+    <script>
+        //resizeCanvas();
         var canvas = document.getElementById('mycanvas');
         
         var renderer = new THREE.WebGLRenderer({canvas: canvas});
@@ -76,13 +74,12 @@ function resizeCanvas() {
         window.addEventListener( 'resize', onWindowResize, false );
 
         function onWindowResize(){
-            console.log("A");
-            resizeCanvas();
-            var canvas = document.getElementById('mycanvas');
-            console.log(canvas.clientWidth);
-            renderer.setViewport(0, 0, canvas.clientWidth, canvas.clientHeight);
-            renderer.setSize( canvas.clientWidth, canvas.clientHeight );
-            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            tamano=resizeCanvas();
+            canvas.width = tamano[0];
+            canvas.height = tamano[1];
+            renderer.setViewport(0, 0, canvas.width, canvas.height);
+            renderer.setSize( canvas.width, canvas.height );
+            camera.aspect = canvas.width / canvas.height;
             camera.updateProjectionMatrix();
 
         }
@@ -93,8 +90,6 @@ function resizeCanvas() {
         camera.position.set( 40, 10, 40 );
         camera.rotation.set( 0, 45, 0 );
         
-        //THREEx.WindowResize(renderer, camera);
-
         scene.background = new THREE.Color( 0x72645b );
         
         //Añadir Luz
@@ -127,126 +122,42 @@ function resizeCanvas() {
         //Material del modelo 3D
         var material = new THREE.MeshPhongMaterial( { color: 0xffaa00} );
 
-        var guitar;
-        var outline;
         //Importar el modelo STL
         var loader = new THREE.STLLoader();
-            loader.load( 'modelos/tele2.STL', function ( geometry ) {
+        loader.load( 'modelos/tele2.STL', function ( geometry ) {
 
-                var guit = new THREE.Mesh( geometry,material );
-                guit.scale.set(0.05, 0.05, 0.05);
-                scene.add(guit);
-                guit.position.set( 0, 5, -10);
-                guit.rotation.set( 0, 0, 150);
-                guit.callback = function(){
-                    //Muestra el desplegable para seleccionar distintas opciones de ese objeto
-                    openPopUpmodelo();
-                }
-                //PARA MARCAR EL BORDE DEL OBJETO
-                var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
-                var outlineMesh1 = new THREE.Mesh (geometry,outlineMaterial1);
-                //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
-                //se expande fijando una esquina, ampliandose hacia el lado contrario
-                outlineMesh1.position.set(-0.2,5,-10.2);
-                outlineMesh1.rotation.set(0,0,150);
-                outlineMesh1.scale.set(0.051,0.051,0.051);
-                //scene.add(outlineMesh1);
-                outline=outlineMesh1;
-                guitar=guit;
+            var guit = new THREE.Mesh( geometry,material );
+            guit.scale.set(0.05, 0.05, 0.05);
+            scene.add(guit);
+            guit.position.set( 0, 5, -10);
+            guit.rotation.set( 0, 0, 150);
+            guit.callback = function(){
+                //Muestra el desplegable para seleccionar distintas opciones de ese objeto
+                openPopUpmodelo();
+            }
+            //PARA MARCAR EL BORDE DEL OBJETO
+            var outlineMaterial1 = new THREE.MeshBasicMaterial ({color: 0xffffff, side: THREE.BackSide});
+            var outlineMesh1 = new THREE.Mesh (geometry,outlineMaterial1);
+            //Hay que posicionar un poco distinto al objeto real, porque al hacer un poco mas grande
+            //se expande fijando una esquina, ampliandose hacia el lado contrario
+            outlineMesh1.position.set(-0.2,5,-10.2);
+            outlineMesh1.rotation.set(0,0,150);
+            outlineMesh1.scale.set(0.051,0.051,0.051);
+            //scene.add(outlineMesh1);
+            outline=outlineMesh1;
+            guitar=guit;
 
-            } );
-        
+        } );
 
-        
-        
         //Revisar esto, si lo quito hay que girar el modelo o la camara
         camera.position.z = 5;
-        
-        
-                //Colorear el objeto que esta debajo del raton.
-        {
-        //Raycaster para seleccionar con el raton
-        var raycaster = new THREE.Raycaster();
-        var mouse = new THREE.Vector2();
-        var INTERSECTED;
-            
-        function onDoubleClick( event ) {
-            event.preventDefault();
-
-            mouse.x = ( event.offsetX/ canvas.clientWidth ) * 2 - 1;
-            mouse.y = - ( event.offsetY / canvas.clientHeight ) * 2 + 1;
-
-            raycaster.setFromCamera( mouse, camera );
-
-            var intersects = raycaster.intersectObjects( scene.children); 
-
-            if ( intersects.length > 0 ) {
-
-                intersects[0].object.callback();
-
-            }
-
-        }
-
-        function onMouseMove( event ) {
-            // calculate mouse position in normalized device coordinates
-            // (-1 to +1) for both components
-            event.preventDefault();
-            
-            mouse.x = ( event.offsetX / canvas.clientWidth) * 2 - 1;
-            mouse.y = - ( event.offsetY / canvas.clientHeight ) * 2 + 1;
-
-        }
-        
-        function render() {
-            // update the picking ray with the camera and mouse position
-            raycaster.setFromCamera( mouse, camera );
-            // calculate objects intersecting the picking ray
-            var intersects = raycaster.intersectObjects( scene.children );
-            
-            //Si no hay objetos encontrados, se ultimo objeto se vuelve al color de antes
-            //Si hay alguno, el que mas cerca este [0], si es el mismo que antes no se hace nada
-            //Si no es el mismo que antes, se pone el objeto anterior con su color original.
-            // Despues se guarda el color del nuevo objeto encontrado. Y se pinta del color para ver que esta SELECCIONADO
-            if (intersects.length>0){
-                if ( INTERSECTED != intersects[ 0 ].object ) {
-
-						if ( INTERSECTED ) {
-                            INTERSECTED.material.color.set( INTERSECTED.currentHex );
-                        }
-                        INTERSECTED=intersects[0].object;
-                        INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
-				        //INTERSECTED.material.color.set( 0xff0000 );
-                        scene.add(outline);
-                }
-            }else{
-                if ( INTERSECTED ){ 
-                    INTERSECTED.material.color.set( INTERSECTED.currentHex );
-                    //scene.remove(outline);
-                }
-
-				INTERSECTED = null;
-                scene.remove(outline);
-            }
-
-            renderer.render( scene, camera );
-        }
-            
-            
-        renderer.domElement.ondblclick=onDoubleClick;
-        window.addEventListener( 'mousemove', onMouseMove, false );
-        //window.addEventListener( 'mousedown', onDocumentMouseDown, false );
-        window.requestAnimationFrame(render);
-            
-        }
-
 
         var animate = function () {
             requestAnimationFrame( animate );
             controls.update();
 
             renderer.render(scene, camera);
-            render();
+            //render();
         };
 
         animate();
