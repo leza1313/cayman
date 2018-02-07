@@ -13,17 +13,21 @@
                    <div class="col-sm-12">
                        <div class="card-group">
                          
-                           <!-- Tercera carta-->
+                         <!-- Hacer esto dinamico on php para cada fila de la tabla guitarras-->
+                          <!-- Primera carta-->
                            <div id='bloque-carta' class="card rounded">
+                              <?php
+                                //Coger de la base de datos informacion de las guitarras
+                                $var_value = 'BAJOS';
+                               ?>
                                <div class="card-block">
-                                   <h4 class="card-title">Galeria</h4>
-                                   <img src="img/galeria-guitar.jpg" alt="guitarra1">
-                                   <div class="card-block">
-                                       <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam nostrum, corporis saepe nobis deserunt impedit amet temporibus id.</p>
-                                       <a href="" class="btn btn-primary">Ir a la Galeria</a>
-                                   </div>
+                                   <h4 class="card-title"><?php echo $var_value;?></h4>
+                                   
+                                   <a href="infobajo.php?varname=<?php echo $var_value ?>"><img src="img/teleca.jpeg" alt="teleca"></a>
+                                   
                                </div>
                            </div>
+                           
                        </div>
                    </div>
                </div>

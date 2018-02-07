@@ -16,42 +16,18 @@
                          <!-- Hacer esto dinamico on php para cada fila de la tabla guitarras-->
                           <!-- Primera carta-->
                            <div id='bloque-carta' class="card rounded">
+                              <?php
+                                //Coger de la base de datos informacion de las guitarras
+                                $var_value = 'mississipi';
+                               ?>
                                <div class="card-block">
-                                   <h4 class="card-title">Mississipi</h4>
-                                   <img src="img/teleca.jpeg" alt="teleca">
-                                   <div class="card-block">
-                                       <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut quam, tempore nostrum, distinctio recusandae tempora excepturi enim sequi incidunt veniam maiores quod.</p>
-                                       <?php 
-                                       $var_value = 'mississipi';
-                                       ?>
-                                       <a class="btn btn-primary" href="infoguitar.php?varname=<?php echo $var_value ?>">Ver mas</a>
-                                   </div>
+                                   <h4 class="card-title"><?php echo $var_value;?></h4>
+                                   
+                                   <a href="infoguitar.php?varname=<?php echo $var_value ?>"><img src="img/teleca.jpeg" alt="teleca"></a>
+                                   
                                </div>
                            </div>
                            
-                           
-                           <!-- Segunda carta-->
-                           <div id='bloque-carta' class="card rounded">
-                               <div class="card-block">
-                                   <h4 class="card-title">Pala</h4>
-                                   <img src="img/pala.jpeg" alt="pala">
-                                   <div class="card-block">
-                                       <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ea dolore blanditiis perspiciatis consequatur sed sunt quidem sequi fuga illum, laborum quo ipsa recusandae aspernatur id, maiores illo quos laudantium.</p>
-                                       <a href="" class="btn btn-primary">Ver más</a>
-                                   </div>
-                               </div>
-                           </div>
-                           <!-- Tercera carta-->
-                           <div id='bloque-carta' class="card rounded">
-                               <div class="card-block">
-                                   <h4 class="card-title">Galeria</h4>
-                                   <img src="img/galeria-guitar.jpg" alt="guitarra1">
-                                   <div class="card-block">
-                                       <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam nostrum, corporis saepe nobis deserunt impedit amet temporibus id.</p>
-                                       <a href="" class="btn btn-primary">Ir a la Galeria</a>
-                                   </div>
-                               </div>
-                           </div>
                        </div>
                    </div>
                </div>

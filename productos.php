@@ -10,19 +10,15 @@
                               <!-- Primera carta-->
                                <div id='bloque-carta' class="card rounded">
                                    <div class="card-block">
-                                       <a href="guitarras.php"><h4 class="card-title">Guitarras</h4></a>
+                                       <h4 class="card-title">Guitarras</h4>
                                        <a href="guitarras.php"><img href="guitarras.php" src="img/guitar1.jpeg" alt="guitarra1"></a>
-                                       <div class="card-block">
-                                       </div>
                                    </div>
                                </div>
                                <!-- Segunda carta-->
                                <div id='bloque-carta' class="card rounded">
                                    <div class="card-block">
-                                       <a href="bajos.php"><h4 class="card-title">Bajos</h4></a>
+                                       <h4 class="card-title">Bajos</h4>
                                        <a href="bajos.php"><img src="img/custom-guitar.jpg" alt="guitarra1"></a>
-                                       <div class="card-block">
-                                       </div>
                                    </div>
                                </div>
                                <!-- Tercera carta Amplis
