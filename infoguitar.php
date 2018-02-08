@@ -55,10 +55,8 @@
         </section>
         -->
        
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!-- Carousel, slick js, necesita jquery definido antes. -->
         <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
         <script src="slick/slick.min.js"></script>
         <script>
             $('.foto-pal').slick({
