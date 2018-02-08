@@ -14,19 +14,43 @@
                        <div class="card-group">
                          
                          <!-- Hacer esto dinamico on php para cada fila de la tabla guitarras-->
-                          <!-- Primera carta-->
+                          <!-- Primera carta
                            <div id='bloque-carta' class="card rounded">
                               <?php
                                 //Coger de la base de datos informacion de las guitarras
-                                $var_value = 'mississipi';
+                                //$var_value = 'mississipi';
                                ?>
                                <div class="card-block">
-                                   <h4 id="titulo-carta" class="card-title"><?php echo $var_value;?></h4>
+                                   <h4 id="titulo-carta" class="card-title"><?php //echo $var_value;?></h4>
                                    
-                                   <a href="infoguitar.php?varname=<?php echo $var_value ?>"><img src="/img/teleca.jpeg" alt="teleca"></a>
+                                   <a href="infoguitar.php?varname=<?php //echo $var_value ?>"><img src="/img/teleca.jpeg" alt="teleca"></a>
                                    
                                </div>
-                           </div>
+                           </div>-->
+                           
+                           
+                           <?php
+
+
+                                include('admin/config.php');
+                                $sql = "SELECT nombre,foto FROM guitarras";
+                                $result = mysqli_query($db,$sql);
+
+                                if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while($row = $result->fetch_assoc()) {
+                                        echo "<br> id: ". $row['nombre']. " - Name: ". $row['foto']. "<br>";
+                                        echo "<div id='bloque-carta' class='card rounded'>";
+                                        echo "<div class='card-block>";
+                                        echo "<h4 id='titulo-carta' class='card-title'>" . $row['nombre'] . "</h4>";
+                                        echo "<a href='infoguitar.php?varname='" . $row['nombre'] . "><img src='" . $row['foto'] . "' alt='" . $row['nombre'] . "'></a>";
+                                        echo "</div>";
+                                        echo "</div>";
+                                    }
+                                } else {
+                                    echo "0 results";
+                                }
+                           ?>
                            
                        </div>
                    </div>
