@@ -97,16 +97,16 @@
     //Añadir salto de linea en el elemento tarjeta
     tarjeta.appendChild(nuevalinea);
     //Guardar en nombre el contenido entre las etiquetas del elemento id
-    var nombre = document.getElementById('product-wrap').childNodes[0].textContent;
+    //var nombre = document.getElementById('product-wrap').childNodes[0].textContent;
     //Crear etiqueta <a>
     var aTag = document.createElement('a');
     //Cargar enlaces en href
-    aTag.setAttribute('href',"bajosadmin.php?varname="+nombre);
+    aTag.setAttribute('href',"bajosadmin.php?varname=");
     //Cargar el texto entre etiquetas
     aTag.innerHTML = "Editar Bajo";
     //Añadir la etiqueta al elemento tarjeta
     tarjeta.appendChild(aTag);
-    
+    /*
     
     //Añadido enlace a añadir guitarras
     var seccion = document.getElementById('productos');
@@ -114,7 +114,7 @@
     var aTag2 = document.createElement('a');
     aTag2.setAttribute('href','bajosadmin.php');
     aTag2.innerHTML = '<br>Añadir Bajo <br><br>';
-    tarjeta.appendChild(aTag2);
+    tarjeta.appendChild(aTag2);*/
     
         
     
