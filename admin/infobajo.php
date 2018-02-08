@@ -6,7 +6,7 @@
     include('../fmontacabecera.php');
     montacabecera("Info Bajo");
 
-    include ('/admin/config.php');
+    include ('config.php');
     $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
     $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
@@ -25,15 +25,15 @@
                     <div class="container" id="myproduct-foto">
                        <div class="foto-pal">
                            <div><img src="<?php echo $row['foto'];?>" alt="" height="300"></div>
-                           <div><img src="img/sg-azul.jpg" alt=""></div>
+                           <div><img src="/img/sg-azul.jpg" alt=""></div>
                            <div><img src="<?php echo $row['foto'];?>" alt="" height="300"></div>
-                           <div><img src="img/sg-azul.jpg" alt=""></div>
+                           <div><img src="/img/sg-azul.jpg" alt=""></div>
                        </div>
                        <div class="foto-min">
                            <div><img src="<?php echo $row['foto'];?>" alt=""></div>
-                           <div><img src="img/sg-azul.jpg" alt=""></div>
+                           <div><img src="/img/sg-azul.jpg" alt=""></div>
                            <div><img src="<?php echo $row['foto'];?>" alt=""></div>
-                           <div><img src="img/sg-azul.jpg" alt=""></div>
+                           <div><img src="/img/sg-azul.jpg" alt=""></div>
                        </div>
                     </div>
                 </div>
@@ -89,6 +89,37 @@
     nav.remove();
     var foot = document.getElementById('footer1');
     foot.remove();
+    
+    //Codigo que añade un salto de linea, enlace <a href> y concatena el contenido al enlace para pasar parametros por GET 
+    var tarjeta = document.getElementById('product-wrap');
+    //Crear salto linea
+    var nuevalinea = document.createElement('br');
+    //Añadir salto de linea en el elemento tarjeta
+    tarjeta.appendChild(nuevalinea);
+    //Guardar en nombre el contenido entre las etiquetas del elemento id
+    var nombre = document.getElementById('product-wrap').childNodes[0].textContent;
+    //Crear etiqueta <a>
+    var aTag = document.createElement('a');
+    //Cargar enlaces en href
+    aTag.setAttribute('href',"bajosadmin.php?varname="+nombre);
+    //Cargar el texto entre etiquetas
+    aTag.innerHTML = "Editar Bajo";
+    //Añadir la etiqueta al elemento tarjeta
+    tarjeta.appendChild(aTag);
+    
+    
+    //Añadido enlace a añadir guitarras
+    var seccion = document.getElementById('productos');
+    
+    var aTag2 = document.createElement('a');
+    aTag2.setAttribute('href','bajosadmin.php');
+    aTag2.innerHTML = '<br>Añadir Bajo <br><br>';
+    tarjeta.appendChild(aTag2);
+    
+        
+    
+    
+    
 </script>
 <?php 
     include('templates/footer-admin.html')
