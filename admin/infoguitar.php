@@ -1,13 +1,19 @@
 <?php
 
+
+//  OJO
+//          No esta funcionando bien, parece que no conecta con la BBDD, entonces da error al cargar y deja de ejecutar el resto del codigo
+//          Por eso creo que no esta borrando con js la segunda navbar
+//
     include('templates/navbar-admin.html');
     
     include('../fmontacabecera.php');
     montacabecera("Info Guitarra");
 
-    include ('/admin/config.php');
+    include ('config.php');
     $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
+    echo 'hola';
     $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
 
     $result = mysqli_query($db,$sql);
