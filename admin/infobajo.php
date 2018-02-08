@@ -6,14 +6,14 @@
     include('../fmontacabecera.php');
     montacabecera("Info Bajo");
 
-    include ('config.php');
+    /*include ('config.php');
     $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
     $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
 
     $result = mysqli_query($db,$sql);
 
-    $row = $result->fetch_assoc();
+    $row = $result->fetch_assoc();*/
 
 ?>
         
@@ -100,6 +100,7 @@
     tarjeta.appendChild(nuevalinea);
     //Guardar en nombre el contenido entre las etiquetas del elemento id
     var nombre = document.getElementById('product-nombre').childNodes[0].textContent;
+    
     //Crear etiqueta <a>
     var aTag = document.createElement('a');
     //Cargar enlaces en href
@@ -110,12 +111,16 @@
     tarjeta.appendChild(aTag);
     
     //Añadido enlace a añadir guitarras
-    var seccion = document.getElementById('productos');
-    
     var aTag2 = document.createElement('a');
     aTag2.setAttribute('href','bajosadmin.php');
-    aTag2.innerHTML = 'Añadir Bajo';
+    aTag2.innerHTML = 'Añadir Bajo ';
     tarjeta.appendChild(aTag2);
+    
+    //Añadido enlace a borrar guitarras
+    var aTag3 = document.createElement('a');
+    aTag3.setAttribute('href','bajosadmin.php');
+    aTag3.innerHTML = 'Borrar Bajo ';
+    tarjeta.appendChild(aTag3);
     
         
     

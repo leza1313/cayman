@@ -25,7 +25,7 @@
     //Cargar enlaces en href
     aTag.setAttribute('href',"guitarrasadmin.php?varname="+nombre);
     //Cargar el texto entre etiquetas
-    aTag.innerHTML = "Editar guitarra";
+    aTag.innerHTML = "Editar guitarra ";
     //Añadir la etiqueta al elemento tarjeta
     tarjeta.appendChild(aTag);
     
@@ -37,6 +37,12 @@
     aTag2.setAttribute('href','guitarrasadmin.php');
     aTag2.innerHTML = '<br>Añadir guitarra <br><br>';
     seccion.appendChild(aTag2);
+
+    //Añadido enlace a borrar guitarras
+    var aTag3 = document.createElement('a');
+    aTag3.setAttribute('href','guitarrasadmin.php?varname='+nombre);
+    aTag3.innerHTML = 'Borrar Guitarra ';
+    tarjeta.appendChild(aTag3);
     
     
 </script>

@@ -11,7 +11,7 @@
 
     $result = mysqli_query($db,$sql);
 
-    $row = $result->fetch_assoc();    
+    $row = $result->fetch_assoc();
 
 ?>
         
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="col" id="product-wrap">
-                    <h2><?php echo $row['nombre'];?></h2>
+                    <h2 id="product-nombre"><?php echo $row['nombre'];?></h2>
                     <p><?php echo $row['descripcion'];?></p>
                 </div>
             </div>
@@ -94,19 +94,19 @@
     
     
     //Codigo que añade un salto de linea, enlace <a href> y concatena el contenido al enlace para pasar parametros por GET 
-    var tarjeta = document.getElementById('product-wrap');
+    var tarjeta = document.getElementById('product-nombre');
     //Crear salto linea
     var nuevalinea = document.createElement('br');
     //Añadir salto de linea en el elemento tarjeta
     tarjeta.appendChild(nuevalinea);
     //Guardar en nombre el contenido entre las etiquetas del elemento id
-    var nombre = document.getElementById('product-wrap').childNodes[0].textContent;
+    var nombre = document.getElementById('product-nombre').childNodes[0].textContent;
     //Crear etiqueta <a>
     var aTag = document.createElement('a');
     //Cargar enlaces en href
     aTag.setAttribute('href',"guitarrasadmin.php?varname="+nombre);
     //Cargar el texto entre etiquetas
-    aTag.innerHTML = "Editar guitarra";
+    aTag.innerHTML = "Editar guitarra ";
     //Añadir la etiqueta al elemento tarjeta
     tarjeta.appendChild(aTag);
     
@@ -116,8 +116,14 @@
     
     var aTag2 = document.createElement('a');
     aTag2.setAttribute('href','guitarrasadmin.php');
-    aTag2.innerHTML = '<br>Añadir guitarra <br><br>';
+    aTag2.innerHTML = 'Añadir guitarra ';
     tarjeta.appendChild(aTag2);
+    
+    //Añadido enlace a borrar guitarras
+    var aTag3 = document.createElement('a');
+    aTag3.setAttribute('href','guitarrasadmin.php');
+    aTag3.innerHTML = 'Borrar Guitarra ';
+    tarjeta.appendChild(aTag3);
     
     
     
