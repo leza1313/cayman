@@ -39,7 +39,6 @@
                                 if ($result->num_rows > 0) {
                                     // output data of each row
                                     while($row = $result->fetch_assoc()) {
-                                        echo "<br> id: ". $row['nombre']. " - Name: ". $row['foto']. "<br>";
                                         echo "<div id='bloque-carta' class='card rounded'>";
                                         echo "<div class='card-block>";
                                         echo "<h4 id='titulo-carta' class='card-title'>" . $row['nombre'] . "</h4>";
