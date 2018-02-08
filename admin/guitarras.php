@@ -16,7 +16,7 @@
     var tarjeta = document.getElementsByClassName('card-title');
     var nuevalinea = document.createElement('br');
     var $element = $(".card-title");
-    console.log($element);
+    console.log($element.childNodes[1].textcontent);
     var nombre = document.getElementsByClassName('card-title').childNodes[0].textContent;
     
     var aTag = document.createElement('a');
