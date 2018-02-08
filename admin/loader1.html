@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styleloader.css">
+<link rel="stylesheet" href="css/stylepopup.css">
+<title>Taller Custom</title>
+</head>
+<script>
+    function resizeCanvas() {
+        var canvs = document.getElementById("mycanvas");
+        canvs.width = window.innerWidth*0.815;
+        canvs.height = window.innerHeight*0.815;
+        return [canvs.width,canvs.height];
+    }
+</script>
+<body>
+    <p onclick="pintarluna()">Luna</p>
+    <p onclick="pintarmaple()">Maple</p>
+    <p onclick="arriba()">Arriba</p>
+    <p onclick="enfrente()">Enfrente</p>
+    <canvas id="mycanvas"></canvas>
+    
+    <script src="js/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/STLLoader.js"></script>
+    <script>
+        //resizeCanvas();
+        var canvas = document.getElementById('mycanvas');
+        
+        var renderer = new THREE.WebGLRenderer({canvas: canvas});
+        renderer.setViewport(0, 0, canvas.clientWidth, canvas.clientHeight);
+        renderer.setSize( canvas.clientWidth, canvas.clientHeight );
+        document.body.appendChild( renderer.domElement );
+        
+        window.addEventListener( 'resize', onWindowResize, false );
+
+        function onWindowResize(){
+            tamano=resizeCanvas();
+            canvas.width = tamano[0];
+            canvas.height = tamano[1];
+            renderer.setViewport(0, 0, canvas.width, canvas.height);
+            renderer.setSize( canvas.width, canvas.height );
+            camera.aspect = canvas.width / canvas.height;
+            camera.updateProjectionMatrix();
+
+        }
+        
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera( 50, canvas.clientWidth/canvas.clientHeight, 0.01, 1000 );
+
+        camera.position.set( 0, 0, 40 );
+        camera.rotation.set( 0, 0, 0 );
+        
+        scene.background = new THREE.Color( 0x72645b );
+        
+        //Añadir Luz
+        
+        var light = new THREE.PointLight( 0xffffff, 1, 0 );
+        light.position.copy( camera.position );
+        light.castShadow = true;
+        scene.add( light );
+        
+        //Set up shadow properties for the light
+        light.shadow.mapSize.width = 512;  // default
+        light.shadow.mapSize.height = 512; // default
+        light.shadow.camera.near = 0.5;       // default
+        light.shadow.camera.far = 500      // default
+        
+        controls = new THREE.OrbitControls(camera);
+        controls.rotateSpeed = 0.5;
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.25;
+        controls.enableZoom = true;
+        
+        //Luz que se fije con la camara, como si la luz seguiria siempre en donde la camara mira
+        controls.addEventListener( 'change', light_update );
+
+        function light_update()
+        {
+            light.position.copy( camera.position );
+        }
+
+        //Material del modelo 3D
+        var material = new THREE.MeshPhongMaterial( { color: 0xffaa00} );
+        var guitar;
+        //Importar el modelo STL
+        var loader = new THREE.STLLoader();
+        loader.load( 'modelos/tele2.STL', function ( geometry ) {
+            //var guit = new THREE.Mesh( geometry,material );
+            var sphereGeom =  new THREE.SphereGeometry( 40, 32, 16 ); 
+            var myTexture = new THREE.TextureLoader().load( 'modelos/maple.jpg' );
+            var myMaterial = new THREE.MeshBasicMaterial( { map: myTexture } );
+            var guit = new THREE.Mesh( sphereGeom, myMaterial );
+            scene.add( guit );	
+
+            guit.scale.set(0.05, 0.05, 0.05);
+            guit.position.set( 0, 0, 0);
+            guitar=guit;
+        } );
+
+        function pintarluna(){
+            guitar.material.map = new THREE.TextureLoader().load('modelos/moon.jpg');
+        }
+        
+        function pintarmaple(){
+            guitar.material.map = new THREE.TextureLoader().load('modelos/maple.jpg');
+        }
+        
+        function arriba(){
+            camera.position.set(0,10,5);
+        }
+        function enfrente(){
+            camera.position.set(0,0,5);
+            
+        }
+        // shaded moon -- side away from light picks up AmbientLight's color.
+        
+        
+        
+        //Revisar esto, si lo quito hay que girar el modelo o la camara
+        camera.position.z = 5;
+
+        var animate = function () {
+            requestAnimationFrame( animate );
+            controls.update();
+
+            renderer.render(scene, camera);
+            //render();
+        };
+
+        animate();
+    </script>
+       
+        <script src="js/jquery-3.2.1.min.js"></script>    
+        <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

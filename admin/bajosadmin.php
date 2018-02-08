@@ -28,11 +28,4 @@
       </div>
       <br>
        
-       
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="../js/jquery-3.2.1.min.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        </section>
-    </body>
-</html>
+<?php include('templates/footer-admin.html');?>

@@ -22,6 +22,16 @@ body{
     color: white;
     text-align: center;
 }
+#cover-admin{
+    background: #8bc3ff;
+    color: white;
+    text-align: center;
+}
+#adminav{
+    position: absolute;
+    top:0;
+    width: 99.32vw;
+}
 img{
     max-width: 100%;
 }
@@ -39,6 +49,12 @@ img{
     color: rgba(255,255,255,0.75);
     width:100%;
     
+}
+#footer-admin{
+    padding: 10px;
+    background: #003874;
+    color: rgba(255,255,255,0.75);
+    width:100%
 }
 .a{
     color: rgba(255,255,255,0.75);
