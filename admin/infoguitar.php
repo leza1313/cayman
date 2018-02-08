@@ -78,7 +78,7 @@
                 focusOnSelect: true
             });
         </script>
-<?php include('templates/footer.html');?>
+<?php include('../templates/footer.html');?>
 
 
 
