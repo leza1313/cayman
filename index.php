@@ -12,19 +12,19 @@
             <!-- Carousel-->
             <div class="container" dir="ltr" id="mycarousel-wrap">
                <div class="mycarousel">
-                   <div><img src="img/banco.jpeg" alt=""></div>
+                   <div><img src="/img/banco.jpeg" alt=""></div>
 
-                   <div><img src="img/galeria-guitar.jpg" alt=""></div>
+                   <div><img src="/img/galeria-guitar.jpg" alt=""></div>
 
-                   <div><img src="img/banco.jpeg" alt=""></div>
+                   <div><img src="/img/banco.jpeg" alt=""></div>
 
-                   <div><img src="img/galeria-guitar.jpg" alt=""></div>
+                   <div><img src="/img/galeria-guitar.jpg" alt=""></div>
 
                </div>
             </div>
             <!-- El slick js (para carousel), necesita jquery definido antes.-->
-            <script src="js/jquery-3.2.1.min.js"></script>
-            <script src="slick/slick.min.js"></script>
+            <script src="/js/jquery-3.2.1.min.js"></script>
+            <script src="/slick/slick.min.js"></script>
             <script>
                 $(".mycarousel").slick({
                     rtl:false,
@@ -47,7 +47,7 @@
                                <div id='bloque-carta' class="card rounded">
                                    <div class="card-block">
                                        <h4 class="card-title">Productos</h4>
-                                       <a href="productos.php"><img src="img/guitar1.jpeg" alt="guitarra1"></a>
+                                       <a href="productos.php"><img src="/img/guitar1.jpeg" alt="guitarra1"></a>
                                        <div class="card-block">
                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut quam, tempore nostrum, distinctio recusandae tempora excepturi enim sequi incidunt veniam maiores quod.</p>
                                            <a href="productos.php" class="btn btn-primary">Ir a Productos</a>
@@ -58,7 +58,7 @@
                                <div id='bloque-carta' class="card rounded">
                                    <div class="card-block">
                                        <h4 class="card-title">Taller</h4>
-                                       <a href="loader.php"><img src="img/custom-guitar.jpg" alt="guitarra1"></a>
+                                       <a href="loader.php"><img src="/img/custom-guitar.jpg" alt="guitarra1"></a>
                                        <div class="card-block">
                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur ea dolore blanditiis perspiciatis consequatur sed sunt quidem sequi fuga illum, laborum quo ipsa recusandae aspernatur id, maiores illo quos laudantium.</p>
                                            <a href="loader.php" class="btn btn-primary">Ir al Taller Custom</a>
@@ -69,7 +69,7 @@
                                <div id='bloque-carta' class="card rounded">
                                    <div class="card-block">
                                        <h4 class="card-title">Galeria</h4>
-                                       <a href=""><img src="img/galeria-guitar.jpg" alt="guitarra1"></a>
+                                       <a href=""><img src="/img/galeria-guitar.jpg" alt="guitarra1"></a>
                                        <div class="card-block">
                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam nostrum, corporis saepe nobis deserunt impedit amet temporibus id.</p>
                                            <a href="" class="btn btn-primary">Ir a la Galeria</a>

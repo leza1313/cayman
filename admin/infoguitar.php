@@ -1,8 +1,11 @@
 <?php
-    include('fmontacabecera.php');
+
+    include('templates/navbar-admin.html');
+    
+    include('../fmontacabecera.php');
     montacabecera("Info Guitarra");
 
-    include ('admin/config.php');
+    include ('/admin/config.php');
     $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
     $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
@@ -56,8 +59,8 @@
         -->
        
         <!-- Carousel, slick js, necesita jquery definido antes. -->
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="slick/slick.min.js"></script>
+        <script src="/js/jquery-3.2.1.min.js"></script>
+        <script src="/slick/slick.min.js"></script>
         <script>
             $('.foto-pal').slick({
                 slidesToShow: 1,
@@ -77,3 +80,18 @@
             });
         </script>
 <?php include('templates/footer.html');?>
+
+
+
+
+<script>
+    var fondo = document.getElementById('cover');
+    fondo.id='cover-admin';
+    var nav = document.getElementById('mynav');
+    nav.remove();
+    var foot = document.getElementById('footer1');
+    foot.remove();
+</script>
+<?php 
+    include('templates/footer-admin.html')
+?>
