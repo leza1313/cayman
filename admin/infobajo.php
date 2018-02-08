@@ -6,14 +6,14 @@
     include('../fmontacabecera.php');
     montacabecera("Info Bajo");
 
-    /*include ('config.php');
+    include ('config.php');
     $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
     $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
 
     $result = mysqli_query($db,$sql);
 
-    $row = $result->fetch_assoc();*/
+    $row = $result->fetch_assoc();
 
 ?>
         
