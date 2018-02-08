@@ -1,10 +1,4 @@
 <?php
-
-
-//  OJO
-//          No esta funcionando bien, parece que no conecta con la BBDD, entonces da error al cargar y deja de ejecutar el resto del codigo
-//          Por eso creo que no esta borrando con js la segunda navbar
-//
     include('templates/navbar-admin.html');
     
     include('../fmontacabecera.php');

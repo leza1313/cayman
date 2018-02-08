@@ -87,6 +87,8 @@
     fondo.id='cover-admin';
     var nav = document.getElementById('mynav');
     nav.remove();
+    
+    //Al ejecutar sale foot is null, por eso peta el resto del js
     var foot = document.getElementById('footer1');
     foot.remove();
     
