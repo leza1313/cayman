@@ -40,7 +40,7 @@
                                     // output data of each row
                                     while($row = $result->fetch_assoc()) {
                                         echo "<div id='bloque-carta' class='card rounded'>";
-                                        echo "<div class='card-block>";
+                                        echo "<div class='card-block'>";
                                         echo "<h4 id='titulo-carta' class='card-title'>" . $row['nombre'] . "</h4>";
                                         echo "<a href='infoguitar.php?varname=" . $row['nombre'] . "'><img src='" . $row['foto'] . "' alt='" . $row['nombre'] . "'></a>";
                                         echo "</div>";
