@@ -28,9 +28,7 @@ body{
     text-align: center;
 }
 #adminav{
-    position: absolute;
-    top:0;
-    width: 99.32vw;
+    position: initial;
 }
 img{
     max-width: 100%;

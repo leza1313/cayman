@@ -1,9 +1,9 @@
 <?php //include('templates/footer-admin.html');
+        include('templates/navbar-admin.html');
         include('../bajos.php');
 ?>
 
 <script>
-
     var fondo = document.getElementById('cover');
     fondo.id='cover-admin';
     var nav = document.getElementById('mynav');
@@ -12,6 +12,5 @@
     foot.remove();
 </script>
 <?php 
-    include('templates/navbar-admin.html');
     include('templates/footer-admin.html')
 ?>

@@ -21,7 +21,7 @@
                                 $var_value = 'mississipi';
                                ?>
                                <div class="card-block">
-                                   <h4 class="card-title"><?php echo $var_value;?></h4>
+                                   <h4 id="titulo-carta" class="card-title"><?php echo $var_value;?></h4>
                                    
                                    <a href="infoguitar.php?varname=<?php echo $var_value ?>"><img src="/img/teleca.jpeg" alt="teleca"></a>
                                    
