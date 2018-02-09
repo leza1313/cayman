@@ -12,16 +12,13 @@
     var foot = document.getElementById('footer1');
     foot.remove();
     
-    //var numrows = <?php echo $result->num_rows; ?>;
+    //var numrows = <?php //echo $result->num_rows; ?>;
     var numrows = 4;
-    console.log(numrows);
     var tarjeta = document.getElementsByClassName('card-title');
     
     var nombre = document.getElementsByClassName('card-title');
    
     for (i = 0; i < numrows; i++) {
-        console.log(i);
-        console.log(tarjeta[i]);
         //Codigo que añade un salto de linea, enlace <a href> y concatena el contenido al enlace para pasar parametros por GET 
             //var tarjeta = document.getElementById('titulo-carta');
         //Crear salto linea
@@ -47,15 +44,16 @@
         //Cargar clase del enlace
         aTag3.setAttribute('class','enlaces');
         aTag3.innerHTML = 'Borrar Guitarra ';
-        aTag3.setAttribute('href','guitarrasadmin.php?varname='+nombre[i]);
+        aTag3.setAttribute('href','guitarrasadmin.php?varname='+nombre[i].childNodes[0].textContent);
         tarjeta[i].appendChild(aTag3);
         
     }
     //Añadido enlace a añadir guitarras. Este solo se pone una vez, independientemente del numero de guitarras que haya
     var seccion = document.getElementById('productos');
-
+    seccion.appendChild(nuevalinea);
     var aTag2 = document.createElement('a');
     aTag2.setAttribute('href','guitarrasadmin.php');
+    aTag2.setAttribute('class','btn btn-info');
     aTag2.innerHTML = '<br>Añadir guitarra <br><br>';
     seccion.appendChild(aTag2);
     

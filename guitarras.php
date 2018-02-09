@@ -35,7 +35,8 @@
                                 include('admin/config.php');
                                 $sql = "SELECT nombre,foto FROM guitarras";
                                 $result = mysqli_query($db,$sql);
-                                
+                                $num_cards=0;     
+                                $num_rows=0;
                                 if ($result->num_rows > 0) {
                                     // output data of each row
                                     while($row = $result->fetch_assoc()) {
@@ -45,9 +46,18 @@
                                         echo "<a href='infoguitar.php?varname=" . $row['nombre'] . "'><img src='" . $row['foto'] . "' alt='" . $row['nombre'] . "'></a>";
                                         echo "</div>";
                                         echo "</div>";
+                                        $num_cards=$num_cards+1;
+                                        if ($num_cards>2){
+                                            echo "<div class='row'><div class='col-sm-12'><div class='card-group'>";
+                                            $num_cards=0;
+                                            $num_rows=$num_rows+1;
+                                        }
                                     }
                                 } else {
                                     echo "0 results";
+                                }
+                                for ($i=0;$i<$num_rows;$i++){
+                                    echo "</div></div></div>";
                                 }
                            ?>
                            
