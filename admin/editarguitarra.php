@@ -1,13 +1,31 @@
 <?php
     include("config.php");
-    session_start();
     if($_SERVER["REQUEST_METHOD"] == "GET") {
-        $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
+        $id = mysqli_real_escape_string($db,$_GET['id']);
         
-        $sql = "UPDATE FROM guitarras WHERE nombre='$mynombre';";
-        echo $sql;
-        $result = mysqli_query($db,$sql);
+        if(isset($_GET['nuevonombre'])){
+            $mynombre = mysqli_real_escape_string($db,$_GET['nuevonombre']);
+            
+            $sql = "UPDATE guitarras SET 'nombre' = '"$mynombre" WHERE 'nombre'="$id;
+            $result = mysqli_query($db,$sql);
+        }elseif(isset($_GET['nuevotexto'])){
+            $mytexto = mysqli_real_escape_string($db,$_GET['nuevotexto']);
+            $sql = "UPDATE guitarras SET 'descripcion' = '"$mytexto" WHERE 'nombre'="$id;
+            $result = mysqli_query($db,$sql);
+        }
+        /*
+        if(isset($_GET['nuevofoto'])){
+            $mynombre = mysqli_real_escape_string($db,$_GET['nuevonombre']);
+            
+            //$sql = "UPDATE guitarras SET 'nombre' = '"$mynombre" WHERE 'nombre'="$id;
+            //echo $sql;
+            //$result = mysqli_query($db,$sql);
+        }
+        */
+        
+        
+        
         
    }
-    header("location:guitarras.php");
+    //header("location:infoguitar.php");
 ?>

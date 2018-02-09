@@ -13,7 +13,53 @@
 
     $row = $result->fetch_assoc();
 */
+    $mynombre = $_GET['varname'];
 ?>
+    <div id="popupeditarnombre_bg" class="mypopup_bg">
+       <div id="popupeditarnombre_main_div" class="mypopupeditar_main_div">
+           <p id="popupeditarnombre_title" class="mypopupeditar_title">Editar:</p>
+           
+           <form action="editarguitarra.php" method="get">
+              <label for="nuevonombre">Nombre</label>
+                <input type="text" class="form-control" name="nuevonombre"  placeholder="<?php echo $mynombre;?>">
+                <input type="hidden" name="id" value="<?php echo $mynombre;?>">
+                <br>
+                <input type="submit" class="btn btn-primary" value="Aceptar">
+           </form>
+           <div id="closepopupeditarnombre" class="closemypopup" title="Cerrar" onclick="closePopUp(event,'popupeditarnombre_bg')">
+               <p id="closepopupeditarnombre_p" class="closemypopup_p">X</p>
+           </div>
+       </div>
+    </div>
+    <!-- PopUp con textarea para poder poner parrafos-->
+    <div id="popupeditartexto_bg" class="mypopup_bg">
+       <div id="popupeditartexto_main_div" class="mypopupeditar_main_div">
+           <p id="popupeditartexto_title" class="mypopupeditar_title">Editar:</p>
+           
+           <form action="editarguitarra.php" method="get">
+              <label for="nuevonombre">Texto</label>
+               <textarea class="form-control" name="nuevotexto" id="" cols="30" rows="10" placeholder="<?php echo $mynombre;?>"></textarea>
+                <input type="hidden" name="id" value="<?php echo $mynombre;?>">
+                <br>
+                <input type="submit" class="btn btn-primary" value="Aceptar">
+           </form>
+           <div id="closepopupeditartexto" class="closemypopup" title="Cerrar" onclick="closePopUp(event,'popupeditartexto_bg')">
+               <p id="closepopupeditartexto_p" class="closemypopup_p">X</p>
+           </div>
+       </div>
+    </div>
+    <script>
+    function openPopUp(event,popupid){
+        var mypopup = document.getElementById(popupid);
+        event.preventDefault();
+        mypopup.style.display = "block";
+    }
+    function closePopUp(event,popupid){
+        var mypopup = document.getElementById(popupid);
+        event.preventDefault();
+        mypopup.style.display = "none";
+    }
+    </script>
         
         <br>
         <div class="container">
@@ -96,34 +142,32 @@
     //Codigo que añade un salto de linea, enlace <a href> y concatena el contenido al enlace para pasar parametros por GET 
     var tarjeta = document.getElementById('product-nombre');
     //Crear salto linea
-    var nuevalinea = document.createElement('br');
+    //var nuevalinea = document.createElement('br');
     //Añadir salto de linea en el elemento tarjeta
-    tarjeta.appendChild(nuevalinea);
+    //tarjeta.appendChild(nuevalinea);
     //Guardar en nombre el contenido entre las etiquetas del elemento id
     var nombre = document.getElementById('product-nombre').childNodes[0].textContent;
     //Crear etiqueta <a>
     var aTag = document.createElement('a');
     //Cargar enlaces en href
-    aTag.setAttribute('href',"guitarrasadmin.php?varname="+nombre);
+    aTag.setAttribute('href','');
+    aTag.setAttribute('onclick',"openPopUp(event,'popupeditarnombre_bg')");
+    aTag.setAttribute('class',"enlaces");
     //Cargar el texto entre etiquetas
-    aTag.innerHTML = "Editar guitarra ";
+    aTag.innerHTML = "<br>Editar Nombre ";
     //Añadir la etiqueta al elemento tarjeta
     tarjeta.appendChild(aTag);
     
     
-    //Añadido enlace a añadir guitarras
-    var seccion = document.getElementById('productos');
-    
     var aTag2 = document.createElement('a');
-    aTag2.setAttribute('href','guitarrasadmin.php');
-    aTag2.innerHTML = 'Añadir guitarra ';
+    //Cargar enlaces en href
+    aTag2.setAttribute('href','');
+    aTag2.setAttribute('onclick',"openPopUp(event,'popupeditartexto_bg')");
+    aTag2.setAttribute('class',"enlaces");
+    //Cargar el texto entre etiquetas
+    aTag2.innerHTML = "<br>Editar Texto ";
+    //Añadir la etiqueta al elemento tarjeta
     tarjeta.appendChild(aTag2);
-    
-    //Añadido enlace a borrar guitarras
-    var aTag3 = document.createElement('a');
-    aTag3.setAttribute('href','guitarrasadmin.php');
-    aTag3.innerHTML = 'Borrar Guitarra ';
-    tarjeta.appendChild(aTag3);
     
     
     
