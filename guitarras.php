@@ -48,6 +48,7 @@
                                         echo "</div>";
                                         $num_cards=$num_cards+1;
                                         if ($num_cards>2){
+                                            echo "</div></div></div>";
                                             echo "<div class='row'><div class='col-sm-12'><div class='card-group'>";
                                             $num_cards=0;
                                             $num_rows=$num_rows+1;
@@ -55,9 +56,6 @@
                                     }
                                 } else {
                                     echo "0 results";
-                                }
-                                for ($i=0;$i<$num_rows;$i++){
-                                    echo "</div></div></div>";
                                 }
                            ?>
                            
