@@ -6,13 +6,13 @@
         if(isset($_GET['nuevonombre'])){
             $mynombre = mysqli_real_escape_string($db,$_GET['nuevonombre']);
             
-            $sql = "UPDATE guitarras SET nombre = '"$mynombre"' WHERE nombre='"$id"'";
+            $sql = "UPDATE guitarras SET nombre = '$mynombre' WHERE nombre='$id'";
             $result = mysqli_query($db,$sql);
             if ($result)
             
         }elseif(isset($_GET['nuevotexto'])){
             $mytexto = mysqli_real_escape_string($db,$_GET['nuevotexto']);
-            $sql = "UPDATE guitarras SET descripcion = '"$mytexto"' WHERE nombre='"$id"'";
+            $sql = "UPDATE guitarras SET descripcion = '$mytexto' WHERE nombre='$id'";
             $result = mysqli_query($db,$sql);
             
         }
@@ -30,5 +30,5 @@
         
         
    }
-    //header("location:infoguitar.php");
+    header("location:infoguitar.php");
 ?>
