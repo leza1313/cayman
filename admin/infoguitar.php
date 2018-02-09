@@ -3,7 +3,7 @@
     
     include('../fmontacabecera.php');
     montacabecera("Info Guitarra");
-/*
+
     include ('config.php');
     $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
@@ -12,8 +12,8 @@
     $result = mysqli_query($db,$sql);
 
     $row = $result->fetch_assoc();
-*/
-    $mynombre = $_GET['varname'];
+    
+    //$mynombre = $_GET['varname'];
 ?>
     <div id="popupeditarnombre_bg" class="mypopup_bg">
        <div id="popupeditarnombre_main_div" class="mypopupeditar_main_div">
