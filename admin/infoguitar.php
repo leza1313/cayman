@@ -38,7 +38,7 @@
            
            <form action="editarguitarra.php" method="get">
               <label for="nuevonombre">Texto</label>
-               <textarea class="form-control" name="nuevotexto" id="" cols="30" rows="10" placeholder="<?php echo $mynombre;?>"></textarea>
+               <textarea class="form-control" name="nuevotexto" id="" cols="30" rows="10" placeholder="<?php echo $row['texto'];?>"></textarea>
                 <input type="hidden" name="id" value="<?php echo $mynombre;?>">
                 <br>
                 <input type="submit" class="btn btn-primary" value="Aceptar">
@@ -82,8 +82,8 @@
                     </div>
                 </div>
                 <div class="col" id="product-wrap">
-                    <h2 id="product-nombre"><?php //echo $row['nombre'];?>nombrea</h2>
-                    <p><?php //echo $row['descripcion'];?>Descripciona</p>
+                    <h2 id="product-nombre"><?php echo $row['nombre'];?></h2>
+                    <p><?php echo $row['descripcion'];?></p>
                 </div>
             </div>
         </div>
