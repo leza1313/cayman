@@ -1,7 +1,8 @@
-<?php //include('templates/footer-admin.html');
+<?php 
+        //include('session.php');
         include('templates/navbar-admin.html');
-        include('../guitarras.php');
-        //include('pruebaguitar.php');
+        //include('../guitarras.php');
+        include('pruebaguitar.php');
 ?>
 
 <script>
@@ -44,7 +45,7 @@
         //Cargar clase del enlace
         aTag3.setAttribute('class','enlaces');
         aTag3.innerHTML = 'Borrar Guitarra ';
-        aTag3.setAttribute('href','guitarrasadmin.php?varname='+nombre[i].childNodes[0].textContent);
+        aTag3.setAttribute('href','borrarguitarra.php?varname='+nombre[i].childNodes[0].textContent);
         tarjeta[i].appendChild(aTag3);
         
     }
@@ -52,7 +53,7 @@
     var seccion = document.getElementById('productos');
     seccion.appendChild(nuevalinea);
     var aTag2 = document.createElement('a');
-    aTag2.setAttribute('href','guitarrasadmin.php');
+    aTag2.setAttribute('href','nuevaguitarra.php');
     aTag2.setAttribute('class','btn btn-info');
     aTag2.innerHTML = '<br>Añadir guitarra <br><br>';
     seccion.appendChild(aTag2);

@@ -35,7 +35,7 @@
                                 include('admin/config.php');
                                 $sql = "SELECT nombre,foto FROM guitarras";
                                 $result = mysqli_query($db,$sql);
-                                $num_cards=0;     
+                                $num_cards=0;
                                 $num_rows=0;
                                 if ($result->num_rows > 0) {
                                     // output data of each row
@@ -56,7 +56,7 @@
                                         }
                                     }
                                 } else {
-                                    echo "0 results";
+                                    echo "<h2>0 results</h2>";
                                 }
                            ?>
                            

@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="../css/style.css">
         
 
-        <title>Guitarras Admin</title>
+        <title>Añadir Guitarra</title>
     </head>
     <body id="cover">
         <?php 
