@@ -4,7 +4,7 @@
     if($_SERVER["REQUEST_METHOD"] == "GET") {
         $mynombre = mysqli_real_escape_string($db,$_GET['nombre']);
         
-        $sql = "DELETE FROM guitarras WHERE nombre=$mynombre;";
+        $sql = "DELETE FROM guitarras WHERE varname=$mynombre;";
         echo $sql;
         $result = mysqli_query($db,$sql);
         
