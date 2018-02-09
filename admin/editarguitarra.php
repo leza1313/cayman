@@ -5,7 +5,8 @@
         
         if(isset($_GET['nuevonombre'])){
             $mynombre = mysqli_real_escape_string($db,$_GET['nuevonombre']);
-            
+            echo $mynombre;
+            echo $id;
             $sql = "UPDATE guitarras SET nombre = '$mynombre' WHERE nombre='$id'";
             $result = mysqli_query($db,$sql);
             if ($result)
