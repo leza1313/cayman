@@ -40,7 +40,7 @@
                                 if ($result->num_rows > 0) {
                                     // output data of each row
                                     while($row = $result->fetch_assoc()) {
-                                        echo "<div id='bloque-carta' class='card rounded'>";
+                                        echo "<div id='bloque-carta' class='card rounded col-sm-4'>";
                                         echo "<div class='card-block'>";
                                         echo "<h4 id='titulo-carta' class='card-title'>" . $row['nombre'] . "</h4>";
                                         echo "<a href='infoguitar.php?varname=" . $row['nombre'] . "'><img src='" . $row['foto'] . "' alt='" . $row['nombre'] . "'></a>";
@@ -49,6 +49,7 @@
                                         $num_cards=$num_cards+1;
                                         if ($num_cards>2){
                                             echo "</div></div></div>";
+                                            echo "<br>";
                                             echo "<div class='row'><div class='col-sm-12'><div class='card-group'>";
                                             $num_cards=0;
                                             $num_rows=$num_rows+1;

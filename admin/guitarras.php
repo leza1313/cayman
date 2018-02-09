@@ -1,7 +1,7 @@
 <?php //include('templates/footer-admin.html');
         include('templates/navbar-admin.html');
-        //include('../guitarras.php');
-        include('pruebaguitar.php');
+        include('../guitarras.php');
+        //include('pruebaguitar.php');
 ?>
 
 <script>
