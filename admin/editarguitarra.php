@@ -1,5 +1,6 @@
 <?php
     include("config.php");
+    echo $_GET['id'];
     if($_SERVER["REQUEST_METHOD"] == "GET") {
         $id = mysqli_real_escape_string($db,$_GET['id']);
         echo $id;
