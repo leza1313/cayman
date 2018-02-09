@@ -32,5 +32,5 @@
         
         
    }
-    header("location:infoguitar.php");
+    header("location:infoguitar.php?varname="$mynombre);
 ?>
