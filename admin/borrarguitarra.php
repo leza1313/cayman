@@ -9,5 +9,5 @@
         $result = mysqli_query($db,$sql);
         
    }
-    header("location:guitarras.php")
+    //header("location:guitarras.php")
 ?>
