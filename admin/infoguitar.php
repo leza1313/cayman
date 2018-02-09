@@ -3,7 +3,7 @@
     
     include('../fmontacabecera.php');
     montacabecera("Info Guitarra");
-
+/*
     include ('config.php');
     $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
@@ -12,7 +12,7 @@
     $result = mysqli_query($db,$sql);
 
     $row = $result->fetch_assoc();
-
+*/
 ?>
         
         <br>
@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div class="col" id="product-wrap">
-                    <h2 id="product-nombre"><?php echo $row['nombre'];?></h2>
-                    <p><?php echo $row['descripcion'];?></p>
+                    <h2 id="product-nombre"><?php //echo $row['nombre'];?>nombrea</h2>
+                    <p><?php //echo $row['descripcion'];?>Descripciona</p>
                 </div>
             </div>
         </div>

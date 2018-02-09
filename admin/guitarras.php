@@ -20,25 +20,8 @@
     var nombre = document.getElementsByClassName('card-title');
    
     for (i = 0; i < numrows; i++) {
-        //Codigo que añade un salto de linea, enlace <a href> y concatena el contenido al enlace para pasar parametros por GET 
-            //var tarjeta = document.getElementById('titulo-carta');
-        //Crear salto linea
         var nuevalinea = document.createElement('br');
-        //Añadir salto de linea en el elemento tarjeta
         tarjeta[i].appendChild(nuevalinea);
-        //Guardar en nombre el contenido entre las etiquetas del elemento id
-            //var nombre = document.getElementById('titulo-carta').childNodes[0].textContent;
-        //Crear etiqueta <a>
-        var aTag = document.createElement('a');
-        
-        //Cargar enlaces en href
-        aTag.setAttribute('href',"guitarrasadmin.php?varname="+nombre[i].childNodes[0].textContent);
-        //Cargar clase del enlace
-        aTag.setAttribute('class','enlaces');
-        //Cargar el texto entre etiquetas
-        aTag.innerHTML = "Editar guitarra ";
-        //Añadir la etiqueta al elemento tarjeta
-        tarjeta[i].appendChild(aTag);
 
         //Añadido enlace a borrar guitarras
         var aTag3 = document.createElement('a');
