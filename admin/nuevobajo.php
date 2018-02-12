@@ -10,7 +10,7 @@
 				
             <div style = "margin:30px">
                
-               <form action = "test.php" method = "post" bg: #fff>
+               <form action = "anadirbajo.php" method = "post" bg: #fff>
                   <label>Nombre       :</label><input type = "text" name = "nombre" class = "box"/><br /><br />
                   <label>Foto         :</label><input type = "text" name = "foto" class = "box" /><br/><br />
                   <label>Descripcion  :</label><input type = "text" name = "descripcion" class = "box" /><br/><br />

@@ -12,38 +12,37 @@
     var foot = document.getElementById('footer1');
     foot.remove();
     
+    var numrows = <?php echo $result->num_rows; ?>;
+    //var numrows = 3;
+    var tarjeta = document.getElementsByClassName('card-title');
     
-    //Codigo que añade un salto de linea, enlace <a href> y concatena el contenido al enlace para pasar parametros por GET 
-    var tarjeta = document.getElementById('titulo-carta');
-    //Crear salto linea
-    var nuevalinea = document.createElement('br');
-    //Añadir salto de linea en el elemento tarjeta
-    tarjeta.appendChild(nuevalinea);
-    //Guardar en nombre el contenido entre las etiquetas del elemento id
-    var nombre = document.getElementById('titulo-carta').childNodes[0].textContent;
-    //Crear etiqueta <a>
-    var aTag = document.createElement('a');
-    //Cargar enlaces en href
-    aTag.setAttribute('href',"bajosadmin.php?varname="+nombre);
-    //Cargar el texto entre etiquetas
-    aTag.innerHTML = "Editar Bajo ";
-    //Añadir la etiqueta al elemento tarjeta
-    tarjeta.appendChild(aTag);
+    var nombre = document.getElementsByClassName('card-title');
+    var nuevalinea=document.createElement('br');
     
-    
-    //Añadido enlace a añadir bajos
+    for (i = 0; i < numrows; i++) {
+        //Añadido enlace a borrar bajos
+        var aTag3 = document.createElement('a');
+        //Cargar clase del enlace
+        aTag3.setAttribute('class','enlaces');
+        aTag3.innerHTML = 'Borrar Bajo ';
+        aTag3.setAttribute('href','borrarbajo.php?varname='+nombre[i].childNodes[0].textContent);
+        tarjeta[i].appendChild(aTag3);
+        
+    }
+    //Añadido enlace a añadir bajos. Este solo se pone una vez, independientemente del numero de bajos que haya
     var seccion = document.getElementById('productos');
-    
+    //seccion.appendChild(nuevalinea);
+    seccion.appendChild(document.createElement('hr'));
     var aTag2 = document.createElement('a');
-    aTag2.setAttribute('href','bajosadmin.php');
-    aTag2.innerHTML = '<br>Añadir bajo <br><br>';
+    aTag2.setAttribute('href','nuevobajo.php');
+    aTag2.setAttribute('class','btn btn-info');
+    aTag2.innerHTML = '<br>Añadir bajo<br><br>';
     seccion.appendChild(aTag2);
+    var nuevalinea2=document.createElement('br');
+    seccion.appendChild(nuevalinea2);
+    seccion.appendChild(nuevalinea);
     
-    //Añadido enlace a borrar guitarras
-    var aTag3 = document.createElement('a');
-    aTag3.setAttribute('href','bajosadmin.php?varname='+nombre);
-    aTag3.innerHTML = 'Borrar Bajo ';
-    tarjeta.appendChild(aTag3);
+    
     
 </script>
 <?php 

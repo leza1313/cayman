@@ -5,7 +5,7 @@
     include ('admin/config.php');
     $mynombre = mysqli_real_escape_string($db,$_GET['varname']);
 
-    $sql = "SELECT nombre,foto,descripcion FROM guitarras WHERE nombre = '$mynombre'";
+    $sql = "SELECT nombre,foto,descripcion FROM bajos WHERE nombre = '$mynombre'";
 
     $result = mysqli_query($db,$sql);
 

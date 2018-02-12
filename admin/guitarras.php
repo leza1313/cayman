@@ -1,12 +1,11 @@
 <?php 
-        //include('session.php');
+        include('session.php');
         include('templates/navbar-admin.html');
-        //include('../guitarras.php');
-        include('pruebaguitar.php');
+        include('../guitarras.php');
+        //include('pruebaguitar.php');
 ?>
 
 <script>
-    console.log=("aaa");
     var fondo = document.getElementById('cover');
     fondo.id='cover-admin';
     var nav = document.getElementById('mynav');
@@ -14,8 +13,8 @@
     var foot = document.getElementById('footer1');
     foot.remove();
     
-    //var numrows = <?php echo $result->num_rows; ?>;
-    var numrows = 3;
+    var numrows = <?php echo $result->num_rows; ?>;
+    //var numrows = 3;
     var tarjeta = document.getElementsByClassName('card-title');
     
     var nombre = document.getElementsByClassName('card-title');
