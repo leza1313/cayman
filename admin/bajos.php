@@ -17,9 +17,9 @@
     var tarjeta = document.getElementsByClassName('card-title');
     
     var nombre = document.getElementsByClassName('card-title');
-    var nuevalinea=document.createElement('br');
     
     for (i = 0; i < numrows; i++) {
+        var nuevalinea=document.createElement('br');
         tarjeta[i].appendChild(nuevalinea);
         //Añadido enlace a borrar bajos
         var aTag3 = document.createElement('a');
@@ -41,7 +41,8 @@
     seccion.appendChild(aTag2);
     var nuevalinea2=document.createElement('br');
     seccion.appendChild(nuevalinea2);
-    seccion.appendChild(nuevalinea);
+    var nuevalinea3=document.createElement('br');
+    seccion.appendChild(nuevalinea3);
     
     
     
