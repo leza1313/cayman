@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "INSERT INTO usuarios (id, pass) VALUES ('$myusername', '$hash');";
             $result = mysqli_query($db,$sql);
             echo "Usuario creado correctamente.";
-            echo "<a href='../index.php'>Volver al Inicio</a>";
+            echo "<a href='index.php'>Volver al Inicio</a>";
         }
 }
 $db->close();
