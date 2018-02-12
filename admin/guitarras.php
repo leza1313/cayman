@@ -22,6 +22,7 @@
     
     for (i = 0; i < numrows; i++) {
         //Añadido enlace a borrar guitarras
+        tarjeta[i].appendChild(nuevalinea);
         var aTag3 = document.createElement('a');
         //Cargar clase del enlace
         aTag3.setAttribute('class','enlaces');

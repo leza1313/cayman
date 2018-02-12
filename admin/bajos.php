@@ -20,6 +20,7 @@
     var nuevalinea=document.createElement('br');
     
     for (i = 0; i < numrows; i++) {
+        tarjeta[i].appendChild(nuevalinea);
         //Añadido enlace a borrar bajos
         var aTag3 = document.createElement('a');
         //Cargar clase del enlace
