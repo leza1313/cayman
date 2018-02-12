@@ -6,20 +6,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']);
-       
-      $sql = "SELECT id FROM usuarios WHERE id = '$myusername' and pass = '$mypassword'";
+    
+      $sql = "SELECT id,pass FROM usuarios WHERE id = '$myusername'";
 
         $result = mysqli_query($db,$sql);
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-        $active = $row['active'];
-      
-        $count = mysqli_num_rows($result);
-    
-        if($count==1){
+
+        $row = $result->fetch_assoc(); 
+     
+        if (password_verify($mypassword, $row['pass'])) {
+            //echo '¡La contraseña es válida!';
             session_start();
             $_SESSION['login_user'] = $myusername;
             header("location: welcome.php");
-        }else {
+        } else {
+            //echo 'La contraseña no es válida.';
             $error = "Your Login Name or Password is invalid";
         }
 }
