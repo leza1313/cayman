@@ -96,10 +96,11 @@
                            </div>-->
                            
                            
-                           <div id='bloque-carta' class='card rounded'><div class='card-block'><h4 id='titulo-carta' class='card-title'>mississipi</h4><a href='infoguitar.php?varname=mississipi'><img src='/img/teleca.jpeg' alt='mississipi'></a></div></div><div id='bloque-carta' class='card rounded'><div class='card-block'><h4 id='titulo-carta' class='card-title'>explorer</h4><a href='infoguitar.php?varname=explorer'><img src='/img/banco.jpeg' alt='explorer'></a></div></div><div id='bloque-carta' class='card rounded'><div class='card-block'><h4 id='titulo-carta' class='card-title'>sg</h4><a href='infoguitar.php?varname=sg'><img src='/img/sg-azul.jpg' alt='sg'></a></div></div><div id='bloque-carta' class='card rounded'><div class='card-block'><h4 id='titulo-carta' class='card-title'>aa</h4><a href='infoguitar.php?varname=aa'><img src='/img/sg-azul.jpg' alt='aa'></a></div></div>                           
+                           <div id='bloque-carta' class='card rounded col-sm-4'><div class='card-block'><h4 id='titulo-carta' class='card-title'>mississipi</h4><a href='infoguitar.php?varname=mississipi'><img src='/img/teleca.jpeg' alt='mississipi'></a></div></div><div id='bloque-carta' class='card rounded col-sm-4'><div class='card-block'><h4 id='titulo-carta' class='card-title'>explorer</h4><a href='infoguitar.php?varname=explorer'><img src='/img/banco.jpeg' alt='explorer'></a></div></div><div id='bloque-carta' class='card rounded col-sm-4'><div class='card-block'><h4 id='titulo-carta' class='card-title'>sg</h4><a href='infoguitar.php?varname=sg'><img src='/img/sg-azul.jpg' alt='sg'></a></div></div></div></div></div><br><div class='row'><div class='col-sm-12'><div class='card-group'>                           
                        </div>
                    </div>
                </div>
+               <br>
                </div>
             </div>
         </section>             
