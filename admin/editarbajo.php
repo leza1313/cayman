@@ -12,11 +12,13 @@
             echo $id;
             $sql = "UPDATE bajos SET nombre = '$mynombre' WHERE nombre='$id'";
             $result = mysqli_query($db,$sql);
+            header("location:infobajo.php?varname=" . $mynombre);
             
         }elseif(isset($_GET['nuevotexto'])){
             $mytexto = mysqli_real_escape_string($db,$_GET['nuevotexto']);
             $sql = "UPDATE bajos SET descripcion = '$mytexto' WHERE nombre='$id'";
             $result = mysqli_query($db,$sql);
+            header("location:infobajo.php?varname=" . $id);
             
         }
         /*
@@ -33,5 +35,5 @@
         
         
    }
-    header("location:infobajo.php?varname=" . $mynombre);
+    
 ?>
