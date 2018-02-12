@@ -16,6 +16,7 @@
     
     //$mynombre = $_GET['varname'];
 ?>
+   <!-- PopUp con input text para poder editar el nombre de la guitarra-->
     <div id="popupeditarnombre_bg" class="mypopup_bg">
        <div id="popupeditarnombre_main_div" class="mypopupeditar_main_div">
            <p id="popupeditarnombre_title" class="mypopupeditar_title">Editar:</p>
@@ -84,26 +85,12 @@
                 </div>
                 <div class="col" id="product-wrap">
                     <h2 id="product-nombre"><?php echo $row['nombre'];?></h2>
-                    <p><?php echo $row['descripcion'];?></p>
+                    <p id="product-descripcion"><?php echo $row['descripcion'];?></p>
                 </div>
             </div>
         </div>
         <br>
-        
-        
-        
-        <!-- Dinamico sin carousel
-        <section id="informacion-guitarra">
-            <div class="section-content">
-               <div class="container">
-                   <h2><?php //echo $row['nombre'];?></h2>
-                   <img src="<?php //echo $row['foto'];?>" alt="foto" height="600">
-                   <p><?php //echo $row['descripcion'];?></p>
-                </div>
-            </div>
-        </section>
-        -->
-       
+
         <!-- Carousel, slick js, necesita jquery definido antes. -->
         <script src="/js/jquery-3.2.1.min.js"></script>
         <script src="/slick/slick.min.js"></script>
@@ -141,14 +128,8 @@
     
     
     //Codigo que añade un salto de linea, enlace <a href> y concatena el contenido al enlace para pasar parametros por GET 
-    var tarjeta = document.getElementById('product-nombre');
-    //Crear salto linea
-    //var nuevalinea = document.createElement('br');
-    //Añadir salto de linea en el elemento tarjeta
-    //tarjeta.appendChild(nuevalinea);
-    //Guardar en nombre el contenido entre las etiquetas del elemento id
-    var nombre = document.getElementById('product-nombre').childNodes[0].textContent;
-    //Crear etiqueta <a>
+    var nombreoriginal = document.getElementById('product-nombre');
+    
     var aTag = document.createElement('a');
     //Cargar enlaces en href
     aTag.setAttribute('href','');
@@ -157,7 +138,7 @@
     //Cargar el texto entre etiquetas
     aTag.innerHTML = "<br>Editar Nombre ";
     //Añadir la etiqueta al elemento tarjeta
-    tarjeta.appendChild(aTag);
+    nombreoriginal.appendChild(aTag);
     
     
     var aTag2 = document.createElement('a');
@@ -166,13 +147,9 @@
     aTag2.setAttribute('onclick',"openPopUp(event,'popupeditartexto_bg')");
     aTag2.setAttribute('class',"enlaces");
     //Cargar el texto entre etiquetas
-    aTag2.innerHTML = "<br>Editar Texto ";
+    aTag2.innerHTML = "<br><hr>Editar Texto ";
     //Añadir la etiqueta al elemento tarjeta
-    tarjeta.appendChild(aTag2);
-    
-    
-    
-    
+    nombreoriginal.appendChild(aTag2);
     
 </script>
 <?php 
