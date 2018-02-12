@@ -17,7 +17,7 @@
 
         <title>Crear Cuenta</title>
     </head>
-    <body id="cover">
+    <body id="cover-admin">
         <br>
         <a href="../index.php" class="btn btn-info">INICIO</a>
         <br>
@@ -25,13 +25,13 @@
         <div align = "center" >
          <div style = "width:300px; border: solid 1px #333333; background-color: #666 " align = "left">
             <div style = "background-color:#444; color:#FFFFFF; padding:3px;"><b>Login</b></div>
-				
+				Crear Cuenta de usuario
             <div style = "margin:30px">
                
                <form action = "anadirusuario.php" method = "post" bg: #fff>
                   <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
                   <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <input type = "submit" value = " Submit "/><br />
+                  <input type = "submit" value = " CREAR "/><br />
                </form>	
             </div>
          </div>
