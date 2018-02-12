@@ -1,8 +1,8 @@
 <?php 
-        //include('session.php');
+        include('session.php');
         include('templates/navbar-admin.html');
-        //include('../guitarras.php');
-        include('pruebaguitar.php');
+        include('../guitarras.php');
+        //include('pruebaguitar.php');
 ?>
 
 <script>

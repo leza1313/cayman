@@ -1,4 +1,5 @@
 <?php
+    include("session.php");
     include("config.php");
     echo $_GET['id'];
     if($_SERVER["REQUEST_METHOD"] == "GET") {

@@ -1,4 +1,5 @@
 <?php //include('templates/footer-admin.html');
+        include('session.php');
         include('templates/navbar-admin.html');
         include('../productos.php');
 ?>
