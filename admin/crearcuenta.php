@@ -24,7 +24,7 @@
         <br>
         <div align = "center" >
          <div style = "width:300px; border: solid 1px #333333; background-color: #666 " align = "left">
-            <div style = "background-color:#444; color:#FFFFFF; padding:3px;"><b>Login</b></div>
+            <div style = "background-color:#444; color:#FFFFFF; padding:3px;"><b>Añadir administrador</b></div>
 				Crear Cuenta de usuario
             <div style = "margin:30px">
                

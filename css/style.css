@@ -37,6 +37,11 @@ img{
     background: #444;
     margin: 0.5%;
 }
+#bloque-carta:hover{
+    -moz-box-shadow: 0px 0px 10px #222; 
+    -webkit-box-shadow: 0px 0px 10px #222; 
+    box-shadow: 0px 0px 10px #222;
+}
 
 #mycarousel-wrap {
     width: 90vw;
