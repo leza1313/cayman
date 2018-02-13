@@ -79,5 +79,6 @@
                            </div>
                        </div>
                    </div>
+                   <br>
                </div>
     <?php include('templates/footer.html');?>

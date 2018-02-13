@@ -102,3 +102,21 @@ img{
     color: rgba(255,255,255,0.6);
     text-decoration: none;
 }
+
+#contacto-form {
+    background: rgba(57, 57, 57, 0.69);
+    margin: 10px;
+    padding: 30px;
+}
+
+#cover-contacto {
+    background: url('../img/mapa-prueba.jpg') repeat;
+    color: white;
+}
+
+#sobre {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    font-size: 48px;
+}
