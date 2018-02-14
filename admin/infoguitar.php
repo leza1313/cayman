@@ -23,7 +23,7 @@
            
            <form action="editarguitarra.php" method="get">
               <label for="nuevonombre">Nombre</label>
-                <input type="text" class="form-control" name="nuevonombre"  placeholder="<?php echo $mynombre;?>">
+                <input type="text" class="form-control" name="nuevonombre"  placholder="<?php echo $mynombre;?>">
                 <input type="hidden" name="id" value="<?php echo $mynombre;?>">
                 <br>
                 <input type="submit" class="btn btn-primary" value="Aceptar">
@@ -40,7 +40,7 @@
            
            <form action="editarguitarra.php" method="get">
               <label for="nuevonombre">Texto</label>
-               <textarea class="form-control" name="nuevotexto" id="" cols="30" rows="10" placeholder="<?php echo $row['descripcion'];?>"></textarea>
+               <textarea class="form-control" name="nuevotexto" id="" cols="30" rows="10" value="<?php echo $row['descripcion'];?>"></textarea>
                 <input type="hidden" name="id" value="<?php echo $mynombre;?>">
                 <br>
                 <input type="submit" class="btn btn-primary" value="Aceptar">
