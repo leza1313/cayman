@@ -80,6 +80,7 @@ img{
 
 #product-wrap {
     background: #3b3a3a;
+    padding: 20px;
 }
 
 .foto-pal {
@@ -119,4 +120,9 @@ img{
     right: 30px;
     top: 20px;
     font-size: 48px;
+}
+
+.product-nombre {
+    color: #17a2b8;
+    font-size: 300%;
 }

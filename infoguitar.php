@@ -34,8 +34,9 @@
                     </div>
                 </div>
                 <div class="col" id="product-wrap">
-                    <h2><?php echo $row['nombre'];?></h2>
-                    <p><?php echo $row['descripcion'];?></p>
+                    <h2 class="product-nombre"><?php echo $row['nombre'];?></h2>
+                    <hr>
+                    <p class="product-descripcion"><?php echo $row['descripcion'];?></p>
                 </div>
             </div>
         </div>
