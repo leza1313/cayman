@@ -4,9 +4,11 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
     header('HTTP/1.0 401 Unauthorized');
     echo 'Texto a enviar si el usuario pulsa el botón Cancelar';
     exit;
-} elseif($_SERVER['PHP_AUTH_USER']==admin && $_SERVER['php_AUTH_PW']=='1234') {
+} elseif($_SERVER['PHP_AUTH_USER']=='admin' && $_SERVER['PHP_AUTH_PW']=='1234') {
     echo "<p>Hola {$_SERVER['PHP_AUTH_USER']}.</p>";
     echo "<p>Introdujo {$_SERVER['PHP_AUTH_PW']} como su contraseña.</p>";
+}else{
+    echo "error";
 }
 ?>
 
