@@ -2,7 +2,8 @@
     //include('../admin/config.php');
     //$_SERVER=null;
     if (!isset($_SERVER['PHP_AUTH_USER'])) {
-        header('WWW-Authenticate: Basic realm="leza1313.hopto.org"');
+        $realm = mt_rand( 1, 1000000000 );
+        header('WWW-Authenticate: Basic realm='.$realm);
         header('HTTP/1.0 401 Unauthorized');
         exit;
     }else{
@@ -25,11 +26,13 @@
         }*/
         if($_SERVER['PHP_AUTH_USER']=='david' && $_SERVER['PHP_AUTH_PW']=='1234'){
             //echo "Contraseña valida!";
+            $_SERVER=null;
         }else{
+            $_SERVER=null;
             echo 'La contraseña no es válida.';
-            header('HTTP/1.0 401 Unauthorized');
             $realm = mt_rand( 1, 1000000000 );
             header( 'WWW-Authenticate: Basic realm='.$realm );
+            header('HTTP/1.0 401 Unauthorized');
             exit;
         }
     }
