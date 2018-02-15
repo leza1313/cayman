@@ -1,16 +1,21 @@
 <?php
-    include('../admin/config.php');
-
+    //include('../admin/config.php');
+    //$_SERVER=null;
     if (!isset($_SERVER['PHP_AUTH_USER'])) {
         header('WWW-Authenticate: Basic realm="leza1313.hopto.org"');
         header('HTTP/1.0 401 Unauthorized');
         exit;
     }else{
-        $username = base64_decode($_SERVER['PHP_AUTH_USER']);
-        $password = base64_decode($_SERVER['PHP_AUTH_PW']);
+        //echo $_SERVER['PHP_AUTH_USER'];
+        //echo $_SERVER['PHP_AUTH_PW'];
+        //$username = base64_decode($_SERVER['PHP_AUTH_USER']);
+        //$password = base64_decode($_SERVER['PHP_AUTH_PW']);
+        //echo $username;
+        //echo $password;
         
-        $myusername = mysqli_real_escape_string($db,$username);
-        $mypassword = mysqli_real_escape_string($db,$password);
+        
+        $myusername = mysqli_real_escape_string($db,$_SERVER['PHP_AUTH_USER']);
+        $mypassword = mysqli_real_escape_string($db,$_SERVER['PHP_AUTH_PW']);
 
         $sql = "SELECT id,pass FROM usuarios WHERE id = '$myusername'";
 
