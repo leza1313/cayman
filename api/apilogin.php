@@ -1,5 +1,5 @@
 <?php
-    //include('../admin/config.php');
+    include('../admin/config.php');
     //$_SERVER=null;
     if (!isset($_SERVER['PHP_AUTH_USER'])) {
         header('WWW-Authenticate: Basic realm="leza1313.hopto.org"');
